@@ -38,6 +38,7 @@ interface Args {
   round?: Round
   disabled?: boolean
   plain?: boolean
+  onClick?: CallableFunction
 }
 
 const Template: Fn<Args> = (args: Args) => ({
@@ -45,7 +46,7 @@ const Template: Fn<Args> = (args: Args) => ({
   setup() {
     return { args }
   },
-  template: '<CoButton v-bind="args">按钮</CoButton>',
+  template: '<CoButton v-bind="args">Button</CoButton>',
 })
 export const Common = Template.bind({})
 Common.args = {
@@ -56,20 +57,81 @@ Common.args = {
   plain: true,
 }
 
-export const Disabled = Template.bind({})
-Disabled.args = {
-  size: ThemeSize.md,
+export const ButtonType: Fn<Args> = (args) => ({
+  components: { CoButton },
+  setup() {
+    return { args }
+  },
+  template: `
+    <div >
+        <CoButton v-bind="args" type='${ThemeType.default}'>default</CoButton>
+        <CoButton v-bind="args" type='${ThemeType.primary}'>primary</CoButton>
+        <CoButton v-bind="args" type='${ThemeType.secondary}'>secondary</CoButton>
+        <CoButton v-bind="args" type='${ThemeType.success}'>success</CoButton>
+        <CoButton v-bind="args" type='${ThemeType.danger}'>danger</CoButton>
+        <CoButton v-bind="args" type='${ThemeType.warning}'>warning</CoButton>
+    </div>
+    <div style='margin: 10px 0'>
+        <CoButton v-bind="args" plain type='${ThemeType.default}'>default</CoButton>
+        <CoButton v-bind="args" plain type='${ThemeType.primary}'>primary</CoButton>
+        <CoButton v-bind="args" plain type='${ThemeType.secondary}'>secondary</CoButton>
+        <CoButton v-bind="args" plain type='${ThemeType.success}'>success</CoButton>
+        <CoButton v-bind="args" plain type='${ThemeType.danger}'>danger</CoButton>
+        <CoButton v-bind="args" plain type='${ThemeType.warning}'>warning</CoButton>
+    </div>
+    <div>
+        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.default}'>default</CoButton>
+        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.primary}'>primary</CoButton>
+        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.secondary}'>secondary</CoButton>
+        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.success}'>success</CoButton>
+        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.danger}'>danger</CoButton>
+        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.warning}'>warning</CoButton>
+    </div>
+  `,
+})
+ButtonType.args = {}
+
+export const ButtonDisabled: Fn<Args> = (args) => ({
+  components: { CoButton },
+  setup() {
+    return { args }
+  },
+  template: `
+    <CoButton v-bind="args" @click="args.onClick">按钮</CoButton>
+    <CoButton v-bind="args" disabled @click="args.onClick">Disabled</CoButton>
+  `,
+})
+ButtonDisabled.args = {
   type: ThemeType.primary,
-  round: Round.bySize,
-  disabled: true,
-  plain: true,
 }
 
-export const Size = Template.bind({})
-Size.args = {
-  size: ThemeSize.md,
+export const ButtonSize: Fn<Args> = (args) => ({
+  components: { CoButton },
+  setup() {
+    return { args }
+  },
+  template: `
+    <CoButton v-bind="args" size='${ThemeSize.mini}'>mini</CoButton>
+    <CoButton v-bind="args" size='${ThemeSize.sm}'>sm</CoButton>
+    <CoButton v-bind="args" size='${ThemeSize.md}'>md</CoButton>
+    <CoButton v-bind="args" size='${ThemeSize.lg}'>lg</CoButton>
+  `,
+})
+ButtonSize.args = {
   type: ThemeType.primary,
-  round: Round.bySize,
-  disabled: false,
-  plain: false,
+}
+
+export const ButtonRound: Fn<Args> = (args) => ({
+  components: { CoButton },
+  setup() {
+    return { args }
+  },
+  template: `
+    <CoButton v-bind="args" round='${Round.none}'>none</CoButton>
+    <CoButton v-bind="args" round='${Round.bySize}'>bySize</CoButton>
+    <CoButton v-bind="args" round='${Round.full}'>full</CoButton>
+  `,
+})
+ButtonRound.args = {
+  type: ThemeType.primary,
 }
