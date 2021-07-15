@@ -41,14 +41,13 @@ interface Args {
   onClick?: CallableFunction
 }
 
-const Template: Fn<Args> = (args: Args) => ({
+export const Common: Fn<Args> = (args: Args) => ({
   components: { CoButton },
   setup() {
     return { args }
   },
   template: '<CoButton v-bind="args">Button</CoButton>',
 })
-export const Common = Template.bind({})
 Common.args = {
   size: ThemeSize.md,
   type: ThemeType.primary,
