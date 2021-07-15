@@ -7,12 +7,12 @@ describe('CoButton.vue', () => {
   it('can use', () => {
     const wrap = mount(CoButton, {
       slots: {
-        default: '测试',
+        default: 'button',
       },
     })
     expect(wrap).toBeTruthy()
     expect(wrap.get('button')).toBeTruthy()
-    expect(wrap.get('button').text()).toBe('测试')
+    expect(wrap.get('button').text()).toBe('button')
   })
 
   describe('can use type', () => {
