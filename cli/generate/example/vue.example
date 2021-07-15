@@ -9,4 +9,10 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+</style>
