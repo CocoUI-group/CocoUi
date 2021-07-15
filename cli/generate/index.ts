@@ -23,9 +23,9 @@ const touchFile = (example: string, file: string) => {
 fs.stat(dir, (err: NodeJS.ErrnoException) => {
   if (err) {
     fs.mkdirSync(dir)
-    touchFile('./jest.example', 'index.spec.ts')
-    touchFile('./stories.example', 'index.stories.ts')
-    touchFile('./vue.example', 'index.vue')
+    touchFile('./example/jest.example', 'index.spec.ts')
+    touchFile('./example/stories.example', 'index.stories.ts')
+    touchFile('./example/vue.example', 'index.vue')
   } else {
     red(`${packageName} already exists `)
   }
