@@ -1,10 +1,10 @@
 import CoButton from './index.vue'
 import { ThemeSize, ThemeType } from '@/helper'
 import { Round } from '@/package/CoButton/index.config'
-import { ComponentOptionsWithoutProps } from '@vue/runtime-core'
+import { StoryTemplate } from '@/type/story.type'
 
 export default {
-  title: 'Co/Button',
+  title: 'CoButton',
   component: CoButton,
   argTypes: {
     type: {
@@ -28,10 +28,7 @@ export default {
     onClick: {},
   },
 }
-interface Fn<T> {
-  (args: T): ComponentOptionsWithoutProps
-  args?: T
-}
+
 interface Args {
   size?: ThemeSize
   type?: ThemeType
@@ -41,7 +38,7 @@ interface Args {
   onClick?: CallableFunction
 }
 
-export const Common: Fn<Args> = (args: Args) => ({
+export const Common: StoryTemplate<Args> = (args: Args) => ({
   components: { CoButton },
   setup() {
     return { args }
@@ -56,7 +53,7 @@ Common.args = {
   plain: true,
 }
 
-export const ButtonType: Fn<Args> = (args) => ({
+export const ButtonType: StoryTemplate<Args> = (args) => ({
   components: { CoButton },
   setup() {
     return { args }
@@ -90,7 +87,7 @@ export const ButtonType: Fn<Args> = (args) => ({
 })
 ButtonType.args = {}
 
-export const ButtonDisabled: Fn<Args> = (args) => ({
+export const ButtonDisabled: StoryTemplate<Args> = (args) => ({
   components: { CoButton },
   setup() {
     return { args }
@@ -104,7 +101,7 @@ ButtonDisabled.args = {
   type: ThemeType.primary,
 }
 
-export const ButtonSize: Fn<Args> = (args) => ({
+export const ButtonSize: StoryTemplate<Args> = (args) => ({
   components: { CoButton },
   setup() {
     return { args }
@@ -120,7 +117,7 @@ ButtonSize.args = {
   type: ThemeType.primary,
 }
 
-export const ButtonRound: Fn<Args> = (args) => ({
+export const ButtonRound: StoryTemplate<Args> = (args) => ({
   components: { CoButton },
   setup() {
     return { args }
