@@ -17,6 +17,10 @@
         >店抖抖</CoLink
       >
     </div>
+    <div>
+      <CoIcon pointer @click="l" :icon="icon" size="lg" type="danger"></CoIcon>
+      <CoIcon pointer @click="l" :icon="icon" size="lg" svg type="primary"></CoIcon>
+    </div>
   </div>
 </template>
 
@@ -25,13 +29,16 @@ import HelloWorld from './components/HelloWorld.vue'
 import { defineComponent } from 'vue'
 import CoButton from '@/package/CoButton/index.vue'
 import CoLink from '@/package/CoLink/index.vue'
+import CoIcon from '@/package/CoIcon/index.vue'
+import { IconName } from '@/package/CoIcon/index.icon'
 export default defineComponent({
-  components: { CoLink, CoButton, HelloWorld },
+  components: { CoIcon, CoLink, CoButton, HelloWorld },
   setup() {
     return {
       l(e: never) {
         console.log(e)
       },
+      icon: IconName.Arrowleft,
     }
   },
 })

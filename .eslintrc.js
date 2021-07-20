@@ -10,7 +10,7 @@ module.exports = {
     '@vue/typescript/recommended',
     'prettier',
     'plugin:prettier/recommended',
-    'plugin:@jarrodldavis/tailwindcss/recommended',
+    // 'plugin:@jarrodldavis/tailwindcss/recommended',
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
