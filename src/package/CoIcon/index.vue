@@ -1,6 +1,11 @@
 <template>
   <i class="iconfont" :class="[iconName, classSize, typeClassList]" v-if="!svg"></i>
-  <svg v-else class="icon-svg icon" :class="[classSize, typeClassList]" aria-hidden="true">
+  <svg
+    v-else
+    class="icon-svg icon inline-block"
+    :class="[classSize, typeClassList]"
+    aria-hidden="true"
+  >
     <use :xlink:href="'#' + iconName"></use>
   </svg>
 </template>
