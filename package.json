@@ -52,6 +52,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "~7",
+    "husky": "^7.0.1",
     "jest": "26",
     "postcss": "^8",
     "postcss-loader": "^6.1.1",
