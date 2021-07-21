@@ -4,6 +4,7 @@ import { StoryTemplate } from '@/type/story.type'
 export default {
   title: '$$$',
   component: $$$,
+  argTypes: {},
 }
 
 interface Args {}

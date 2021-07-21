@@ -8,7 +8,7 @@
     "jsx": "preserve",
     "sourceMap": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client","jest","node"],
+    "types": ["vite/client", "jest", "node"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

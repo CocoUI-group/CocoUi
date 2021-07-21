@@ -8,15 +8,15 @@ export default {
   component: CoButton,
   argTypes: {
     type: {
-      options: Object.keys(ThemeType),
+      options: Object.values(ThemeType),
       control: { type: 'select', labels: ThemeType },
     },
     size: {
-      options: Object.keys(ThemeSize),
+      options: Object.values(ThemeSize),
       control: { type: 'select', labels: ThemeSize },
     },
     round: {
-      options: Object.keys(Round),
+      options: Object.values(Round),
       control: { type: 'select', labels: Round },
     },
     plain: {

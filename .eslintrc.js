@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: {
     node: true,
+    browser: true,
   },
   extends: [
     'plugin:vue/vue3-essential',
@@ -10,7 +11,7 @@ module.exports = {
     '@vue/typescript/recommended',
     'prettier',
     'plugin:prettier/recommended',
-    'plugin:@jarrodldavis/tailwindcss/recommended',
+    // 'plugin:@jarrodldavis/tailwindcss/recommended',
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
