@@ -26,6 +26,7 @@ export default {
     pointer: {
       control: { type: 'boolean' },
     },
+    onClick: {},
   },
 }
 
