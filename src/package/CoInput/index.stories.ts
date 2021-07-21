@@ -6,7 +6,9 @@ export default {
   component: CoInput,
 }
 
-interface Args {}
+interface Args {
+  A?: string
+}
 
 export const Common: StoryTemplate<Args> = (args: Args) => ({
   components: { CoInput },
