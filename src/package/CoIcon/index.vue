@@ -16,7 +16,6 @@ import { ThemeSize, ThemeType } from '@/helper'
 import { sizeStyle, typeStyle } from '@/package/CoIcon/index.config'
 import { IconName } from '@/package/CoIcon/index.icon'
 
-console.log(IconName)
 export default defineComponent({
   name: 'CoIcon',
   props: {
