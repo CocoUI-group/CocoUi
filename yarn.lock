@@ -1372,16 +1372,6 @@
   resolved "https://registry.nlark.com/@istanbuljs/schema/download/@istanbuljs/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha1-5F44TkuOwWvOL9kDr3hFD2v37Jg=
 
-"@jarrodldavis/eslint-plugin-tailwindcss@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.nlark.com/@jarrodldavis/eslint-plugin-tailwindcss/download/@jarrodldavis/eslint-plugin-tailwindcss-0.4.0.tgz#2baf607635ab46fe36fbdd2513a35c723b1aece8"
-  integrity sha1-K69gdjWrRv42+90lE6Nccjsa7Og=
-  dependencies:
-    ajv "^6.12.6"
-    esquery "^1.3.1"
-    postcss-load-config "^3.0.0"
-    postcss-selector-parser "^6.0.4"
-
 "@jest/console@^26.6.2":
   version "26.6.2"
   resolved "https://registry.nlark.com/@jest/console/download/@jest/console-26.6.2.tgz?cache=0&sync_timestamp=1624900071035&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40jest%2Fconsole%2Fdownload%2F%40jest%2Fconsole-26.6.2.tgz#4e04bc464014358b03ab4937805ee36a0aeb98f2"
@@ -3496,7 +3486,7 @@ ajv-keywords@^3.1.0, ajv-keywords@^3.4.1, ajv-keywords@^3.5.2:
   resolved "https://registry.nlark.com/ajv-keywords/download/ajv-keywords-3.5.2.tgz#31f29da5ab6e00d1c2d329acf7b5929614d5014d"
   integrity sha1-MfKdpatuANHC0yms97WSlhTVAU0=
 
-ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.12.4, ajv@^6.12.5, ajv@^6.12.6:
+ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.12.4, ajv@^6.12.5:
   version "6.12.6"
   resolved "https://registry.nlark.com/ajv/download/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha1-uvWmLoArB9l3A0WG+MO69a3ybfQ=
@@ -6164,7 +6154,7 @@ esprima@^4.0.0, esprima@^4.0.1, esprima@~4.0.0:
   resolved "https://registry.nlark.com/esprima/download/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha1-E7BM2z5sXRnfkatph6hpVhmwqnE=
 
-esquery@^1.3.1, esquery@^1.4.0:
+esquery@^1.4.0:
   version "1.4.0"
   resolved "https://registry.nlark.com/esquery/download/esquery-1.4.0.tgz#2148ffc38b82e8c7057dfed48425b3e61f0f24a5"
   integrity sha1-IUj/w4uC6McFff7UhCWz5h8PJKU=
