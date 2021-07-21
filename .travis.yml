@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - "14"
-before_install:
-  - yarn config set registry https://registry.yarnpkg.com
-install:
-  - yarn
+#before_install:
+#  - yarn config set registry https://registry.yarnpkg.com
+#install:
+#  - yarn
