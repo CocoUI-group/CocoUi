@@ -3,5 +3,7 @@ node_js:
   - "14"
 #before_install:
 #  - yarn config set registry https://registry.yarnpkg.com
-#install:
-#  - yarn
+install:
+  - npm install
+script:
+  - npm run test
