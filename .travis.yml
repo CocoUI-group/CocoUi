@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - "14"
+before_install:
+  - yarn config set registry https://registry.yarnpkg.com
+  - yarn config set user-agent 'yarn/1.22.10 npm/? node/v14.17.1 darwin x64'
+
 #install:
 #  - yarn --no-lockfile
 #script:
