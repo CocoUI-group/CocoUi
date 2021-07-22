@@ -13,3 +13,9 @@ export enum ThemeSize {
   md = 'md',
   lg = 'lg',
 }
+
+export enum ThemeRound {
+  none = 'none',
+  bySize = 'bySize',
+  full = 'full',
+}

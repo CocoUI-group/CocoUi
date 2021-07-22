@@ -1,6 +1,5 @@
 import CoButton from './index.vue'
-import { ThemeSize, ThemeType } from '@/helper'
-import { Round } from '@/package/CoButton/index.config'
+import { ThemeRound, ThemeSize, ThemeType } from '@/helper'
 import { StoryTemplate } from '@/type/story.type'
 
 export default {
@@ -16,8 +15,8 @@ export default {
       control: { type: 'select', labels: ThemeSize },
     },
     round: {
-      options: Object.values(Round),
-      control: { type: 'select', labels: Round },
+      options: Object.values(ThemeRound),
+      control: { type: 'select', labels: ThemeRound },
     },
     plain: {
       control: { type: 'boolean' },
@@ -32,7 +31,7 @@ export default {
 interface Args {
   size?: ThemeSize
   type?: ThemeType
-  round?: Round
+  round?: ThemeRound
   disabled?: boolean
   plain?: boolean
   onClick?: CallableFunction
@@ -48,7 +47,7 @@ export const Common: StoryTemplate<Args> = (args: Args) => ({
 Common.args = {
   size: ThemeSize.md,
   type: ThemeType.primary,
-  round: Round.bySize,
+  round: ThemeRound.bySize,
   disabled: false,
   plain: true,
 }
@@ -76,12 +75,12 @@ export const ButtonType: StoryTemplate<Args> = (args) => ({
         <CoButton v-bind="args" plain type='${ThemeType.warning}'>warning</CoButton>
     </div>
     <div>
-        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.default}'>default</CoButton>
-        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.primary}'>primary</CoButton>
-        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.secondary}'>secondary</CoButton>
-        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.success}'>success</CoButton>
-        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.danger}'>danger</CoButton>
-        <CoButton v-bind="args" round='${Round.full}' type='${ThemeType.warning}'>warning</CoButton>
+        <CoButton v-bind="args" round='${ThemeRound.full}' type='${ThemeType.default}'>default</CoButton>
+        <CoButton v-bind="args" round='${ThemeRound.full}' type='${ThemeType.primary}'>primary</CoButton>
+        <CoButton v-bind="args" round='${ThemeRound.full}' type='${ThemeType.secondary}'>secondary</CoButton>
+        <CoButton v-bind="args" round='${ThemeRound.full}' type='${ThemeType.success}'>success</CoButton>
+        <CoButton v-bind="args" round='${ThemeRound.full}' type='${ThemeType.danger}'>danger</CoButton>
+        <CoButton v-bind="args" round='${ThemeRound.full}' type='${ThemeType.warning}'>warning</CoButton>
     </div>
   `,
 })
@@ -123,9 +122,9 @@ export const ButtonRound: StoryTemplate<Args> = (args) => ({
     return { args }
   },
   template: `
-    <CoButton v-bind="args" round='${Round.none}'>none</CoButton>
-    <CoButton v-bind="args" round='${Round.bySize}'>bySize</CoButton>
-    <CoButton v-bind="args" round='${Round.full}'>full</CoButton>
+    <CoButton v-bind="args" round='${ThemeRound.none}'>none</CoButton>
+    <CoButton v-bind="args" round='${ThemeRound.bySize}'>bySize</CoButton>
+    <CoButton v-bind="args" round='${ThemeRound.full}'>full</CoButton>
   `,
 })
 ButtonRound.args = {

@@ -1,9 +1,5 @@
-import { ThemeSize, ThemeType } from '@/helper'
-export enum Round {
-  none = 'none',
-  bySize = 'bySize',
-  full = 'full',
-}
+import { ThemeRound, ThemeSize, ThemeType } from '@/helper'
+
 export const typeStyle = (type: ThemeType, plain: boolean, disabled: boolean): string => {
   if (disabled) {
     return 'bg-coolGray-100 border-gray-300 text-gray-500  cursor-not-allowed opacity-80'
@@ -30,7 +26,7 @@ export const typeStyle = (type: ThemeType, plain: boolean, disabled: boolean): s
   return map[`${type}${plain ? '-plain' : ''}`] || defaultStyle
 }
 
-export const sizeStyle = (size: ThemeSize, round: Round): string => {
+export const sizeStyle = (size: ThemeSize, round: ThemeRound): string => {
   const defaultStyle = 'text-base py-2 px-8'
   const map: { [key in ThemeSize]: string } = {
     [ThemeSize.mini]: 'text-xs py-1 px-2',
@@ -41,16 +37,16 @@ export const sizeStyle = (size: ThemeSize, round: Round): string => {
   const roundMap = {
     [ThemeSize.mini]: 'rounded-sm',
     [ThemeSize.sm]: 'rounded',
-    [ThemeSize.md]: 'rounded-md',
-    [ThemeSize.lg]: 'rounded-lg',
+    [ThemeSize.md]: 'rounded',
+    [ThemeSize.lg]: 'rounded',
   }
   const classList = map[size] || defaultStyle
   switch (round) {
-    case Round.bySize:
+    case ThemeRound.bySize:
       return [classList, roundMap[size] || 'rounded-md'].join(' ')
-    case Round.none:
+    case ThemeRound.none:
       return [classList, 'rounded-none'].join(' ')
-    case Round.full:
+    case ThemeRound.full:
       return [classList, 'rounded-full'].join(' ')
   }
 }

@@ -10,8 +10,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue'
-import { ThemeSize, ThemeType } from '@/helper'
-import { Round, sizeStyle, typeStyle } from '@/package/CoButton/index.config'
+import { ThemeRound, ThemeSize, ThemeType } from '@/helper'
+import { sizeStyle, typeStyle } from '@/package/CoButton/index.config'
 
 export default defineComponent({
   name: 'CoButton',
@@ -29,8 +29,8 @@ export default defineComponent({
       default: ThemeSize.md,
     },
     round: {
-      type: String as PropType<Round>,
-      default: Round.bySize,
+      type: String as PropType<ThemeRound>,
+      default: ThemeRound.bySize,
     },
     disabled: {
       type: Boolean,

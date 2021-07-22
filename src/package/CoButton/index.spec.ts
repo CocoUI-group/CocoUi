@@ -1,7 +1,6 @@
 import CoButton from './index.vue'
 import { mount } from '@vue/test-utils'
-import { ThemeSize, ThemeType } from '@/helper'
-import { Round } from '@/package/CoButton/index.config'
+import { ThemeRound, ThemeSize, ThemeType } from '@/helper'
 
 describe('CoButton.vue', () => {
   it('can use', () => {
@@ -55,12 +54,12 @@ describe('CoButton.vue', () => {
         expect(button.classes('rounded-md')).toBeTruthy()
       })
       it('none', () => {
-        const wrap = mount(CoButton, { props: { round: Round.none } })
+        const wrap = mount(CoButton, { props: { round: ThemeRound.none } })
         const button = wrap.get('button')
         expect(button.classes('rounded-none')).toBeTruthy()
       })
       it('full', () => {
-        const wrap = mount(CoButton, { props: { round: Round.full } })
+        const wrap = mount(CoButton, { props: { round: ThemeRound.full } })
         const button = wrap.get('button')
         expect(button.classes('rounded-full')).toBeTruthy()
       })
