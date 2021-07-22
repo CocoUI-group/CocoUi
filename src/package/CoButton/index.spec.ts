@@ -51,7 +51,7 @@ describe('CoButton.vue', () => {
       it('default bySize', () => {
         const wrap = mount(CoButton)
         const button = wrap.get('button')
-        expect(button.classes('rounded-md')).toBeTruthy()
+        expect(button.classes('rounded')).toBeTruthy()
       })
       it('none', () => {
         const wrap = mount(CoButton, { props: { round: ThemeRound.none } })
