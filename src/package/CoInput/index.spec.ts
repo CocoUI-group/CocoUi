@@ -62,14 +62,14 @@ describe('CoInput.vue', () => {
     })
   })
 
-  it('can disabled', () => {
+  it('can disabled', async () => {
     const cb = jest.fn()
     const wrap = mount(CoInput, { props: { disabled: true, onFocus: cb } })
     const input = wrap.get('input')
     expect(input.classes('cursor-not-allowed')).toBeTruthy()
-    expect(input.attributes('disabled')).toBeTruthy()
+    expect(input.attributes()).toHaveProperty('disabled')
     expect(cb).toBeCalledTimes(0)
-    input.trigger('focus')
+    await input.trigger('focus')
     expect(cb).toBeCalledTimes(0)
   })
 

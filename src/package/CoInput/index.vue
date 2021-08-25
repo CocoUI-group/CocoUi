@@ -60,7 +60,7 @@ import {
 import { ThemeRound, ThemeSize } from '@/helper'
 import CoIcon from '@/package/CoIcon/index.vue'
 import { IconName } from '@/package/CoIcon/index.icon'
-import { useToggle, useVModel } from '@vueuse/core'
+import { or, useToggle, useVModel } from '@vueuse/core'
 
 export default defineComponent({
   name: 'CoInput',
@@ -90,7 +90,7 @@ export default defineComponent({
     const value = useVModel(props, 'modelValue', ctx.emit)
     watch(value, (v) => ctx.emit('input', v))
     const colorClassList = reactiveTypeStyle(disabled, error)
-    const sizeClass = reactiveSizeStyle(size, round, ctx.slots, password || clearable)
+    const sizeClass = reactiveSizeStyle(size, round, ctx.slots, or(password, clearable))
     const [refPassword, togglePassword] = useToggle(true)
     const eyeIcon = computed(() => (refPassword.value ? IconName.EyeClose : IconName.Eye))
     const leftClass = reactiveLeftSlot(round, size)
