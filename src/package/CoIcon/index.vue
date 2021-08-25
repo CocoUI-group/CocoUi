@@ -35,7 +35,7 @@ export default defineComponent({
   },
   setup(props) {
     const { icon, size, type, pointer } = toRefs(props)
-    const iconName = computed(() => `co-${icon}`)
+    const iconName = computed(() => `co-${icon.value}`)
     const classSize = reactiveSizeStyle(size)
     const typeClassList = reactiveTypeStyle(type, pointer)
     return {

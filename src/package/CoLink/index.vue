@@ -44,7 +44,7 @@ export default defineComponent({
     return {
       typeClassList,
       sizeClass,
-      onClick: (e: Event) => !disabled && ctx.emit('click', e),
+      onClick: (e: Event) => !disabled.value && ctx.emit('click', e),
     }
   },
 })
