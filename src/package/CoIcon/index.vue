@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, reactive } from 'vue'
+import { computed, defineComponent, PropType, toRefs } from 'vue'
 import { ThemeSize, ThemeType } from '@/helper'
 import { IconName } from '@/package/CoIcon/index.icon'
 import { reactiveSizeStyle, reactiveTypeStyle } from '@/package/CoIcon/index.config'
@@ -34,7 +34,7 @@ export default defineComponent({
     pointer: Boolean,
   },
   setup(props) {
-    const { icon, size, type, pointer } = reactive(props)
+    const { icon, size, type, pointer } = toRefs(props)
     const iconName = computed(() => `co-${icon}`)
     const classSize = reactiveSizeStyle(size)
     const typeClassList = reactiveTypeStyle(type, pointer)

@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, reactive } from 'vue'
+import { defineComponent, PropType, toRefs } from 'vue'
 import { ThemeSize, ThemeType } from '@/helper'
 import { reactiveSizeStyle, reactiveTypeStyle } from '@/package/CoLink/index.config'
 
@@ -38,7 +38,7 @@ export default defineComponent({
   },
   emits: ['click'],
   setup(props, ctx) {
-    const { type, underline, disabled, size } = reactive(props)
+    const { type, underline, disabled, size } = toRefs(props)
     const typeClassList = reactiveTypeStyle(type, disabled, underline)
     const sizeClass = reactiveSizeStyle(size)
     return {

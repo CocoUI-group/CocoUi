@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, reactive } from 'vue'
+import { defineComponent, PropType, toRefs } from 'vue'
 import { ThemeRound, ThemeSize, ThemeType } from '@/helper'
 import { reactiveSizeStyle, reactiveTypeStyle } from '@/package/CoButton/index.config'
 
@@ -38,7 +38,7 @@ export default defineComponent({
   },
   emits: ['click'],
   setup(props) {
-    const { type, plain, disabled, size, round } = reactive(props)
+    const { type, plain, disabled, size, round } = toRefs(props)
     const typeClassList = reactiveTypeStyle(type, plain, disabled)
     const sizeClass = reactiveSizeStyle(size, round)
     return {
