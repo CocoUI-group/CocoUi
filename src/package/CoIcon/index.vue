@@ -11,10 +11,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType, reactive } from 'vue'
 import { ThemeSize, ThemeType } from '@/helper'
-import { sizeStyle, typeStyle } from '@/package/CoIcon/index.config'
 import { IconName } from '@/package/CoIcon/index.icon'
+import { reactiveSizeStyle, reactiveTypeStyle } from '@/package/CoIcon/index.config'
 
 export default defineComponent({
   name: 'CoIcon',
@@ -34,9 +34,10 @@ export default defineComponent({
     pointer: Boolean,
   },
   setup(props) {
-    const iconName = computed(() => `co-${props.icon}`)
-    const classSize = computed(() => sizeStyle(props.size))
-    const typeClassList = computed(() => typeStyle(props.type, props.pointer))
+    const { icon, size, type, pointer } = reactive(props)
+    const iconName = computed(() => `co-${icon}`)
+    const classSize = reactiveSizeStyle(size)
+    const typeClassList = reactiveTypeStyle(type, pointer)
     return {
       iconName,
       classSize,

@@ -1,6 +1,7 @@
 import { ThemeRound, ThemeSize, ThemeType } from '@/helper'
+import { reactify } from '@vueuse/core'
 
-export const typeStyle = (type: ThemeType, plain: boolean, disabled: boolean): string => {
+const typeStyle = (type: ThemeType, plain: boolean, disabled: boolean): string => {
   if (disabled) {
     return 'bg-coolGray-100 border-gray-300 text-gray-500  cursor-not-allowed opacity-80'
   }
@@ -26,7 +27,7 @@ export const typeStyle = (type: ThemeType, plain: boolean, disabled: boolean): s
   return map[`${type}${plain ? '-plain' : ''}`] || defaultStyle
 }
 
-export const sizeStyle = (size: ThemeSize, round: ThemeRound): string => {
+const sizeStyle = (size: ThemeSize, round: ThemeRound): string => {
   const defaultStyle = 'text-base py-2 px-8'
   const map: { [key in ThemeSize]: string } = {
     [ThemeSize.mini]: 'text-xs py-1 px-2',
@@ -50,3 +51,6 @@ export const sizeStyle = (size: ThemeSize, round: ThemeRound): string => {
       return [classList, 'rounded-full'].join(' ')
   }
 }
+
+export const reactiveTypeStyle = reactify(typeStyle)
+export const reactiveSizeStyle = reactify(sizeStyle)

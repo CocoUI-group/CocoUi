@@ -1,6 +1,7 @@
 import { ThemeSize, ThemeType } from '@/helper'
+import { reactify } from '@vueuse/core'
 
-export const typeStyle = (type: ThemeType, disabled: boolean, underline: boolean): string => {
+const typeStyle = (type: ThemeType, disabled: boolean, underline: boolean): string => {
   if (disabled) {
     return 'cursor-not-allowed text-gray-400'
   }
@@ -20,7 +21,7 @@ export const typeStyle = (type: ThemeType, disabled: boolean, underline: boolean
   }
 }
 
-export const sizeStyle = (size: ThemeSize): string => {
+const sizeStyle = (size: ThemeSize): string => {
   const defaultStyle = 'text-base'
   const map: { [key in ThemeSize]: string } = {
     [ThemeSize.mini]: 'text-xs',
@@ -31,3 +32,6 @@ export const sizeStyle = (size: ThemeSize): string => {
 
   return map[size] || defaultStyle
 }
+
+export const reactiveTypeStyle = reactify(typeStyle)
+export const reactiveSizeStyle = reactify(sizeStyle)

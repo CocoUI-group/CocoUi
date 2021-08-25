@@ -1,4 +1,5 @@
 import { ThemeSize, ThemeType } from '@/helper'
+import { reactify } from '@vueuse/core'
 // noinspection SpellCheckingInspection
 export const cdnHash = `font_1286082_loc28tee2jp`
 
@@ -7,7 +8,7 @@ export enum IconType {
   svg = 'svg',
 }
 
-export const typeStyle = (type: ThemeType, pointer: boolean): string => {
+const typeStyle = (type: ThemeType, pointer: boolean): string => {
   const map: { [key in ThemeType]: string } = {
     [ThemeType.default]: 'text-current',
     [ThemeType.primary]: 'text-primary-500',
@@ -23,7 +24,7 @@ export const typeStyle = (type: ThemeType, pointer: boolean): string => {
   }
   return style
 }
-export const sizeStyle = (size: ThemeSize): string => {
+const sizeStyle = (size: ThemeSize): string => {
   const defaultStyle = 'text-base'
   const map: { [key in ThemeSize]: string } = {
     [ThemeSize.mini]: 'text-xs',
@@ -33,3 +34,6 @@ export const sizeStyle = (size: ThemeSize): string => {
   }
   return map[size] || defaultStyle
 }
+
+export const reactiveTypeStyle = reactify(typeStyle)
+export const reactiveSizeStyle = reactify(sizeStyle)

@@ -41,6 +41,13 @@
         v-model="inputValue"
         clearable
       ></CoInput>
+      <CoInput
+        size="lg"
+        round="full"
+        placeholder="placeholder"
+        v-model="inputValue"
+        password
+      ></CoInput>
       <CoInput size="lg" placeholder="placeholder" v-model="inputValue">
         <template #before>
           <CoIcon pointer @click="l" :icon="icon" size="lg" svg type="primary"></CoIcon>

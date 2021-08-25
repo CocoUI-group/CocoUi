@@ -1,5 +1,6 @@
 import { ThemeRound, ThemeSize } from '@/helper'
 import { Slots } from '@vue/runtime-core'
+import { reactify } from '@vueuse/core'
 
 const map = {
   [ThemeSize.mini]: [
@@ -19,14 +20,17 @@ const map = {
     ['right-2.5', 'right-3'],
   ],
 }
-export const leftSlot = (round: ThemeRound, size: ThemeSize): string => {
+const leftSlot = (round: ThemeRound, size: ThemeSize): string => {
   return map[size][0][round === ThemeRound.full ? 1 : 0]
 }
+export const reactiveLeftSlot = reactify(leftSlot)
 
-export const rightSlot = (round: ThemeRound, size: ThemeSize): string => {
+const rightSlot = (round: ThemeRound, size: ThemeSize): string => {
   return map[size][1][round === ThemeRound.full ? 1 : 0]
 }
-export const typeStyle = (disabled: boolean, error: boolean): string => {
+export const reactiveRightSlot = reactify(rightSlot)
+
+const typeStyle = (disabled: boolean, error: boolean): string => {
   const list = []
   if (error) {
     list.push('border-danger-500 focus:border-primary-500 text-danger-500 focus:text-black')
@@ -40,6 +44,8 @@ export const typeStyle = (disabled: boolean, error: boolean): string => {
 
   return list.join(' ')
 }
+
+export const reactiveTypeStyle = reactify(typeStyle)
 
 const paddingMap = {
   [ThemeSize.mini]: {
@@ -84,7 +90,7 @@ const paddingMap = {
   },
 }
 
-export const sizeStyle = (
+const sizeStyle = (
   size: ThemeSize,
   round: ThemeRound,
   slots: Slots,
@@ -116,3 +122,5 @@ export const sizeStyle = (
       return [...classList, roundMap[size] || 'rounded-md'].join(' ')
   }
 }
+
+export const reactiveSizeStyle = reactify(sizeStyle)

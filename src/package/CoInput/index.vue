@@ -18,11 +18,11 @@
     />
     <co-icon
       class="absolute top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-700"
-      :class="[leftClass]"
+      :class="[rightClass]"
       v-if="password"
       :icon="eyeIcon"
       pointer
-      @click="togglePassword"
+      @click="togglePassword()"
     />
     <co-icon
       class="absolute top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-700"
@@ -50,13 +50,18 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, ref } from 'vue'
-import { leftSlot, rightSlot, sizeStyle, typeStyle } from '@/package/CoInput/input.config'
+import { computed, defineComponent, PropType, reactive, watch } from 'vue'
+import {
+  reactiveLeftSlot,
+  reactiveRightSlot,
+  reactiveSizeStyle,
+  reactiveTypeStyle,
+} from '@/package/CoInput/input.config'
 import { ThemeRound, ThemeSize } from '@/helper'
 import CoIcon from '@/package/CoIcon/index.vue'
 import { IconName } from '@/package/CoIcon/index.icon'
+import { useToggle, useVModel } from '@vueuse/core'
 
-const emits = ['input', 'update:modelValue'] as const
 export default defineComponent({
   name: 'CoInput',
   components: { CoIcon },
@@ -74,37 +79,22 @@ export default defineComponent({
       type: String as PropType<ThemeRound>,
       default: ThemeRound.bySize,
     },
-    disabled: {
-      type: Boolean,
-    },
-    error: {
-      type: Boolean,
-    },
-    password: {
-      type: Boolean,
-    },
-    clearable: {
-      type: Boolean,
-    },
+    disabled: Boolean,
+    error: Boolean,
+    password: Boolean,
+    clearable: Boolean,
   },
-  emits: [...emits, 'clear'],
+  emits: ['input', 'update:modelValue', 'clear'],
   setup(props, ctx) {
-    const value = computed({
-      get() {
-        return props.modelValue
-      },
-      set(v) {
-        emits.forEach((e) => ctx.emit(e, v))
-      },
-    })
-    const colorClassList = computed(() => typeStyle(props.disabled, props.error))
-    const sizeClass = computed(() =>
-      sizeStyle(props.size, props.round, ctx.slots, props.password || props.clearable)
-    )
-    const refPassword = ref(false)
+    const { disabled, error, size, round, password, clearable } = reactive(props)
+    const value = useVModel(props, 'modelValue', ctx.emit)
+    watch(value, (v) => ctx.emit('input', v))
+    const colorClassList = reactiveTypeStyle(disabled, error)
+    const sizeClass = reactiveSizeStyle(size, round, ctx.slots, password || clearable)
+    const [refPassword, togglePassword] = useToggle(false)
     const eyeIcon = computed(() => (refPassword.value ? IconName.EyeClose : IconName.Eye))
-    const leftClass = computed(() => leftSlot(props.round, props.size))
-    const rightClass = computed(() => rightSlot(props.round, props.size))
+    const leftClass = reactiveLeftSlot(round, size)
+    const rightClass = reactiveRightSlot(round, size)
     return {
       sizeClass,
       colorClassList,
@@ -118,7 +108,7 @@ export default defineComponent({
         value.value = ''
         ctx.emit('clear')
       },
-      togglePassword: () => (refPassword.value = !refPassword.value),
+      togglePassword,
     }
   },
 })

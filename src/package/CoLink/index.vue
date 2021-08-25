@@ -5,14 +5,16 @@
     :href="disabled ? null : href"
     v-bind="$attrs"
     @click="onClick"
-    ><slot></slot
-  ></a>
+  >
+    <slot></slot>
+  </a>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, reactive } from 'vue'
 import { ThemeSize, ThemeType } from '@/helper'
-import { typeStyle, sizeStyle } from '@/package/CoLink/index.config'
+import { reactiveSizeStyle, reactiveTypeStyle } from '@/package/CoLink/index.config'
+
 export default defineComponent({
   name: 'CoLink',
   props: {
@@ -36,24 +38,13 @@ export default defineComponent({
   },
   emits: ['click'],
   setup(props, ctx) {
-    const typeClassList = computed(() => {
-      const type = props.type
-      const underline = props.underline
-      const disabled = props.disabled
-      return typeStyle(type, disabled, underline)
-    })
-    const sizeClass = computed(() => {
-      const size = props.size
-      return sizeStyle(size)
-    })
+    const { type, underline, disabled, size } = reactive(props)
+    const typeClassList = reactiveTypeStyle(type, disabled, underline)
+    const sizeClass = reactiveSizeStyle(size)
     return {
       typeClassList,
       sizeClass,
-      onClick(e: Event) {
-        if (!props.disabled) {
-          ctx.emit('click', e)
-        }
-      },
+      onClick: (e: Event) => !disabled && ctx.emit('click', e),
     }
   },
 })

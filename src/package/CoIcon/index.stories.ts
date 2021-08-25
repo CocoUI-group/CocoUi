@@ -55,41 +55,37 @@ Common.args = {
   pointer: false,
 }
 
-export const IconType: StoryTemplate<Args> = (args: Args) => ({
-  components: { CoIcon },
-  setup() {
-    return { args }
-  },
-  template: `
-    <div>
-      <CoIcon v-bind="args"  type='${ThemeType.default}' />
-      <CoIcon v-bind="args"  type='${ThemeType.primary}' />
-      <CoIcon v-bind="args"  type='${ThemeType.secondary}' />
-      <CoIcon v-bind="args"  type='${ThemeType.success}' />
-      <CoIcon v-bind="args"  type='${ThemeType.danger}' />
-      <CoIcon v-bind="args"  type='${ThemeType.warning}' />
-    </div>
-  `,
-})
+export const IconType: StoryTemplate<Args> = (args: Args) => {
+  const mapRender = (templateFn: (type: ThemeType) => string) =>
+    Object.keys(ThemeType).map(templateFn).join('')
+
+  const common = (type: ThemeType) => `<CoIcon v-bind="args" type="${type}" />`
+  return {
+    components: { CoIcon },
+    setup() {
+      return { args }
+    },
+    template: mapRender(common),
+  }
+}
 
 IconType.args = {
   icon: IconName.Apple,
 }
 
-export const IconSize: StoryTemplate<Args> = (args: Args) => ({
-  components: { CoIcon },
-  setup() {
-    return { args }
-  },
-  template: `
-    <div>
-      <CoIcon v-bind="args"  size='${ThemeSize.mini}' />
-      <CoIcon v-bind="args"  size='${ThemeSize.sm}' />
-      <CoIcon v-bind="args"  size='${ThemeSize.md}' />
-      <CoIcon v-bind="args"  size='${ThemeSize.lg}' />
-    </div>
-  `,
-})
+export const IconSize: StoryTemplate<Args> = (args: Args) => {
+  const mapRender = (templateFn: (type: ThemeSize) => string) =>
+    Object.keys(ThemeSize).map(templateFn).join('')
+  const common = (size: ThemeSize) => `<CoIcon v-bind="args" size="${size}" />`
+
+  return {
+    components: { CoIcon },
+    setup() {
+      return { args }
+    },
+    template: mapRender(common),
+  }
+}
 
 IconSize.args = {
   icon: IconName.Apple,

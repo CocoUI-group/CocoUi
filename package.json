@@ -12,8 +12,9 @@
     "g": "ts-node cli/generate/index.ts"
   },
   "dependencies": {
+    "@vueuse/core": "^6.0.0",
     "storybook": "^6.3.4",
-    "vue": "~3.1",
+    "vue": "3.2",
     "vuex": "~4.0"
   },
   "devDependencies": {
@@ -36,7 +37,7 @@
     "@typescript-eslint/eslint-plugin": "~4",
     "@typescript-eslint/parser": "~4",
     "@vitejs/plugin-vue": "~1.2",
-    "@vue/compiler-sfc": "~3.1",
+    "@vue/compiler-sfc": "3.2",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "~7.0",
     "@vue/test-utils": "^2.0.0-rc.10",
