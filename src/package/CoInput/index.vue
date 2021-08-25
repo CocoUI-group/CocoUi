@@ -14,7 +14,7 @@
       "
       :class="[sizeClass, colorClassList]"
       :disabled="disabled"
-      :type="type || (password && refPassword ? 'password' : 'text')"
+      :type="password && refPassword ? 'password' : type"
     />
     <co-icon
       class="absolute top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-700"
@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, reactive, watch } from 'vue'
+import { computed, defineComponent, PropType, toRefs, watch } from 'vue'
 import {
   reactiveLeftSlot,
   reactiveRightSlot,
@@ -70,7 +70,7 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    type: String,
+    type: { String, default: 'text' },
     size: {
       type: String as PropType<ThemeSize>,
       default: ThemeSize.md,
@@ -86,7 +86,7 @@ export default defineComponent({
   },
   emits: ['input', 'update:modelValue', 'clear'],
   setup(props, ctx) {
-    const { disabled, error, size, round, password, clearable } = reactive(props)
+    const { disabled, error, size, round, password, clearable } = toRefs(props)
     const value = useVModel(props, 'modelValue', ctx.emit)
     watch(value, (v) => ctx.emit('input', v))
     const colorClassList = reactiveTypeStyle(disabled, error)
