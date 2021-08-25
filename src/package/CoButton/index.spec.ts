@@ -47,22 +47,22 @@ describe('CoButton.vue', () => {
       const button = wrap.get('button')
       expect(button.classes('text-xs')).toBeTruthy()
     })
-    describe('can use round', () => {
-      it('default bySize', () => {
-        const wrap = mount(CoButton)
-        const button = wrap.get('button')
-        expect(button.classes('rounded')).toBeTruthy()
-      })
-      it('none', () => {
-        const wrap = mount(CoButton, { props: { round: ThemeRound.none } })
-        const button = wrap.get('button')
-        expect(button.classes('rounded-none')).toBeTruthy()
-      })
-      it('full', () => {
-        const wrap = mount(CoButton, { props: { round: ThemeRound.full } })
-        const button = wrap.get('button')
-        expect(button.classes('rounded-full')).toBeTruthy()
-      })
+  })
+  describe('can use round', () => {
+    it('default bySize', () => {
+      const wrap = mount(CoButton)
+      const button = wrap.get('button')
+      expect(button.classes('rounded')).toBeTruthy()
+    })
+    it('none', () => {
+      const wrap = mount(CoButton, { props: { round: ThemeRound.none } })
+      const button = wrap.get('button')
+      expect(button.classes('rounded-none')).toBeTruthy()
+    })
+    it('full', () => {
+      const wrap = mount(CoButton, { props: { round: ThemeRound.full } })
+      const button = wrap.get('button')
+      expect(button.classes('rounded-full')).toBeTruthy()
     })
   })
 
