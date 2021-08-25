@@ -53,13 +53,12 @@ Common.args = {
 }
 
 export const ButtonType: StoryTemplate<Args> = (args) => {
-  const mapRender = (templateFn: (type: ThemeType) => string) =>
+  const mapRender = (templateFn: (type: string) => string) =>
     Object.keys(ThemeType).map(templateFn).join('')
 
-  const common = (type: ThemeType) => `<CoButton v-bind="args" type="${type}">${type}</CoButton>`
-  const plain = (type: ThemeType) =>
-    `<CoButton v-bind="args" type="${type}" plain>${type}</CoButton>`
-  const round = (type: ThemeType) =>
+  const common = (type: string) => `<CoButton v-bind="args" type="${type}">${type}</CoButton>`
+  const plain = (type: string) => `<CoButton v-bind="args" type="${type}" plain>${type}</CoButton>`
+  const round = (type: string) =>
     `<CoButton v-bind="args" type="${type}" round='${ThemeRound.full}'>${type}</CoButton>`
   const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
 
@@ -73,24 +72,27 @@ export const ButtonType: StoryTemplate<Args> = (args) => {
 }
 ButtonType.args = {}
 
-export const ButtonDisabled: StoryTemplate<Args> = (args) => ({
-  components: { CoButton },
-  setup() {
-    return { args }
-  },
-  template: `
-    <CoButton v-bind="args" @click="args.onClick">按钮</CoButton>
-    <CoButton v-bind="args" disabled @click="args.onClick">Disabled</CoButton>
-  `,
-})
+export const ButtonDisabled: StoryTemplate<Args> = (args) => {
+  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
+  return {
+    components: { CoButton },
+    setup() {
+      return { args }
+    },
+    template: [
+      div('<CoButton v-bind="args" >Normal</CoButton>'),
+      div(`<CoButton v-bind="args" disabled >Disabled</CoButton>`),
+    ].join('\n'),
+  }
+}
 ButtonDisabled.args = {
   type: ThemeType.primary,
 }
 
 export const ButtonSize: StoryTemplate<Args> = (args) => {
-  const mapRender = (templateFn: (type: ThemeSize) => string) =>
+  const mapRender = (templateFn: (type: string) => string) =>
     Object.keys(ThemeSize).map(templateFn).join('')
-  const common = (size: ThemeSize) => `<CoButton v-bind="args" size="${size}">${size}</CoButton>`
+  const common = (size: string) => `<CoButton v-bind="args" size="${size}">${size}</CoButton>`
 
   return {
     components: { CoButton },
@@ -105,10 +107,9 @@ ButtonSize.args = {
 }
 
 export const ButtonRound: StoryTemplate<Args> = (args) => {
-  const mapRender = (templateFn: (type: ThemeRound) => string) =>
+  const mapRender = (templateFn: (type: string) => string) =>
     Object.keys(ThemeRound).map(templateFn).join('')
-  const common = (round: ThemeRound) =>
-    `<CoButton v-bind="args" round="${round}">${round}</CoButton>`
+  const common = (round: string) => `<CoButton v-bind="args" round="${round}">${round}</CoButton>`
 
   return {
     components: { CoButton },
