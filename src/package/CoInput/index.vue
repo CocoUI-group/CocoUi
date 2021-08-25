@@ -3,9 +3,6 @@
     <input
       v-model="value"
       v-bind="$attrs"
-      :class="[sizeClass, colorClassList]"
-      :disabled="disabled"
-      :type="type || (password && refPassword ? 'password' : 'text')"
       class="
         w-full
         transition-all
@@ -15,6 +12,9 @@
         outline-none
         focus:border-primary-500 focus:ring-primary-500 focus:outline-none
       "
+      :class="[sizeClass, colorClassList]"
+      :disabled="disabled"
+      :type="type || (password && refPassword ? 'password' : 'text')"
     />
     <co-icon
       class="absolute top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-700"
@@ -91,7 +91,7 @@ export default defineComponent({
     watch(value, (v) => ctx.emit('input', v))
     const colorClassList = reactiveTypeStyle(disabled, error)
     const sizeClass = reactiveSizeStyle(size, round, ctx.slots, password || clearable)
-    const [refPassword, togglePassword] = useToggle(false)
+    const [refPassword, togglePassword] = useToggle(true)
     const eyeIcon = computed(() => (refPassword.value ? IconName.EyeClose : IconName.Eye))
     const leftClass = reactiveLeftSlot(round, size)
     const rightClass = reactiveRightSlot(round, size)

@@ -33,7 +33,9 @@ export const reactiveRightSlot = reactify(rightSlot)
 const typeStyle = (disabled: boolean, error: boolean): string => {
   const list = []
   if (error) {
-    list.push('border-danger-500 focus:border-primary-500 text-danger-500 focus:text-black')
+    list.push(
+      'border-danger-500 focus:border-danger-500 focus:ring-0 text-danger-500 focus:text-danger-500'
+    )
   }
   if (disabled) {
     list.push('bg-coolGray-100 text-gray-500 cursor-not-allowed opacity-80')
