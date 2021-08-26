@@ -5,12 +5,12 @@ import { IconName } from '@/package/CoIcon/index.icon'
 
 describe('CoIcon.vue', () => {
   it('can use', () => {
-    const wrap = mount(CoIcon)
+    const wrap = mount(CoIcon, { props: { icon: IconName.Arrowleft } })
     expect(wrap).toBeTruthy()
   })
   it('can click', () => {
     const cb = jest.fn()
-    const wrap = mount(CoIcon, { props: { onClick: cb } })
+    const wrap = mount(CoIcon, { props: { onClick: cb, icon: IconName.Arrowleft } })
     expect(cb).toBeCalledTimes(0)
     wrap.trigger('click')
     expect(cb).toBeCalledTimes(1)
@@ -26,29 +26,29 @@ describe('CoIcon.vue', () => {
     it('set svg', () => {
       const wrap = mount(CoIcon, { props: { icon: IconName.Arrowleft, svg: true } })
       const el = wrap.get('svg')
-      //无法使用dom操作引入js
       expect(el).toBeTruthy()
+      expect(wrap.get('use').attributes('href')).toBe('#co-arrowleft')
     })
   })
   describe('can use size', () => {
     it('default md', () => {
-      const wrap = mount(CoIcon)
+      const wrap = mount(CoIcon, { props: { icon: IconName.Arrowleft } })
       expect(wrap.classes('text-base')).toBeTruthy()
     })
     it('mini', () => {
-      const wrap = mount(CoIcon, { props: { size: ThemeSize.mini } })
+      const wrap = mount(CoIcon, { props: { size: ThemeSize.mini, icon: IconName.Arrowleft } })
       expect(wrap.classes('text-xs')).toBeTruthy()
     })
   })
 
   describe('can use type', () => {
     it('default', () => {
-      const wrap = mount(CoIcon)
+      const wrap = mount(CoIcon, { props: { icon: IconName.Arrowleft } })
       expect(wrap.classes('text-current')).toBeTruthy()
     })
     it('primary', () => {
       const wrap = mount(CoIcon, {
-        props: { type: ThemeType.primary },
+        props: { type: ThemeType.primary, icon: IconName.Arrowleft },
       })
       expect(wrap.classes('text-primary-500')).toBeTruthy()
     })
@@ -56,13 +56,13 @@ describe('CoIcon.vue', () => {
 
   describe('can use pointer', () => {
     it('default', () => {
-      const wrap = mount(CoIcon)
+      const wrap = mount(CoIcon, { props: { icon: IconName.Arrowleft } })
       expect(wrap.classes('hover:opacity-80')).toBeFalsy()
       expect(wrap.classes('cursor-pointer')).toBeFalsy()
     })
     it('primary', () => {
       const wrap = mount(CoIcon, {
-        props: { pointer: true },
+        props: { pointer: true, icon: IconName.Arrowleft },
       })
       expect(wrap.classes('hover:opacity-80')).toBeTruthy()
       expect(wrap.classes('cursor-pointer')).toBeTruthy()
