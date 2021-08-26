@@ -2,6 +2,8 @@ import CoInput from './index.vue'
 import { flushPromises, mount } from '@vue/test-utils'
 import { ref } from 'vue'
 import { ThemeRound, ThemeSize } from '@/helper'
+import { IconName } from '@/package/CoIcon/index.icon'
+import CoIcon from '@/package/CoIcon/index.vue'
 
 describe('CoInput.vue', () => {
   it('can use', async () => {
@@ -89,5 +91,56 @@ describe('CoInput.vue', () => {
     await flushPromises()
     expect(input.attributes('type')).toBe('text')
     expect(icon.classes('co-eye')).toBeTruthy()
+  })
+
+  it('can set clearable', async () => {
+    const cb = jest.fn()
+    const wrap = mount({
+      template: `
+        <CoInput @clear='cb' v-model='val' clearable />`,
+      components: { CoInput },
+      setup() {
+        const val = ref('123')
+        return { val, cb }
+      },
+    })
+    const input = wrap.find('input')
+    const icon = wrap.find('i.iconfont')
+    expect(input.element.value).toBe('123')
+    expect(icon.classes('co-close-circle')).toBeTruthy()
+    expect(cb).toBeCalledTimes(0)
+    await icon.trigger('click')
+    await flushPromises()
+    expect(input.element.value).toBe('')
+    expect(cb).toBeCalledTimes(1)
+  })
+
+  describe('can use  slot', () => {
+    const before = `<template #before>
+          <CoIcon icon="${IconName.User}" />
+        </template>`
+    const after = `<template #after>
+            <CoIcon icon="${IconName.User}" />
+          </template>`
+    it('before slot', () => {
+      const wrap = mount({
+        template: `<CoInput>${before}</CoInput>`,
+        components: { CoInput, CoIcon },
+      })
+      const icon = wrap.find('i.iconfont')
+      const input = wrap.find('input')
+      expect(icon.classes('co-user')).toBeTruthy()
+      expect(input.classes('pl-7')).toBeTruthy()
+    })
+    it('after slot', () => {
+      const wrap = mount({
+        template: `<CoInput>${after}</CoInput>`,
+        components: { CoInput, CoIcon },
+      })
+      const icon = wrap.find('i.iconfont')
+      const input = wrap.find('input')
+      expect(icon.classes('co-user')).toBeTruthy()
+      expect(input.classes('pr-7')).toBeTruthy()
+    })
   })
 })
