@@ -20,6 +20,7 @@ module.exports = {
   ],
   webpackFinal: (config) => {
     config.resolve.alias['@'] = path.resolve(__dirname, '../src');
+    config.output.publicPath = 'http://static.linzhihui.online/storybook-static/'
     return config;
   },
 }
