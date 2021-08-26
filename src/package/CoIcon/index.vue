@@ -11,10 +11,11 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, toRefs } from 'vue'
+import { defineComponent, PropType, toRefs } from 'vue'
 import { ThemeSize, ThemeType } from '@/helper'
 import { IconName } from '@/package/CoIcon/index.icon'
 import { reactiveSizeStyle, reactiveTypeStyle } from '@/package/CoIcon/index.config'
+import { reactify } from '@vueuse/core'
 
 export default defineComponent({
   name: 'CoIcon',
@@ -22,7 +23,7 @@ export default defineComponent({
     svg: {
       type: Boolean,
     },
-    icon: { type: String as PropType<IconName> },
+    icon: { type: String as PropType<IconName>, required: true },
     size: {
       type: String as PropType<ThemeSize>,
       default: ThemeSize.md,
@@ -35,7 +36,7 @@ export default defineComponent({
   },
   setup(props) {
     const { icon, size, type, pointer } = toRefs(props)
-    const iconName = computed(() => `co-${icon.value}`)
+    const iconName = reactify((v: IconName) => `co-${v}`)(icon)
     const classSize = reactiveSizeStyle(size)
     const typeClassList = reactiveTypeStyle(type, pointer)
     return {

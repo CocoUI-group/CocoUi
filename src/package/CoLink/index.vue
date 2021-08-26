@@ -14,6 +14,7 @@
 import { defineComponent, PropType, toRefs } from 'vue'
 import { ThemeSize, ThemeType } from '@/helper'
 import { reactiveSizeStyle, reactiveTypeStyle } from '@/package/CoLink/index.config'
+import { get } from '@vueuse/core'
 
 export default defineComponent({
   name: 'CoLink',
@@ -44,7 +45,7 @@ export default defineComponent({
     return {
       typeClassList,
       sizeClass,
-      onClick: (e: Event) => !disabled.value && ctx.emit('click', e),
+      onClick: (e: Event) => !get(disabled) && ctx.emit('click', e),
     }
   },
 })

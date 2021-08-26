@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, toRefs, watch } from 'vue'
+import { defineComponent, PropType, toRefs, watch } from 'vue'
 import {
   reactiveLeftSlot,
   reactiveRightSlot,
@@ -60,7 +60,7 @@ import {
 import { ThemeRound, ThemeSize } from '@/helper'
 import CoIcon from '@/package/CoIcon/index.vue'
 import { IconName } from '@/package/CoIcon/index.icon'
-import { or, useToggle, useVModel } from '@vueuse/core'
+import { or, reactify, set, useToggle, useVModel } from '@vueuse/core'
 
 export default defineComponent({
   name: 'CoInput',
@@ -92,7 +92,7 @@ export default defineComponent({
     const colorClassList = reactiveTypeStyle(disabled, error)
     const sizeClass = reactiveSizeStyle(size, round, ctx.slots, or(password, clearable))
     const [refPassword, togglePassword] = useToggle(true)
-    const eyeIcon = computed(() => (refPassword.value ? IconName.EyeClose : IconName.Eye))
+    const eyeIcon = reactify((v: boolean) => (v ? IconName.EyeClose : IconName.Eye))(refPassword)
     const leftClass = reactiveLeftSlot(round, size)
     const rightClass = reactiveRightSlot(round, size)
     return {
@@ -105,7 +105,7 @@ export default defineComponent({
       rightClass,
       clearIcon: IconName.CloseCircle,
       clear: () => {
-        value.value = ''
+        set(value, '')
         ctx.emit('clear')
       },
       togglePassword,
