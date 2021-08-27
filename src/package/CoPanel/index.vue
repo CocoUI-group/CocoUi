@@ -7,7 +7,7 @@
     >
       <slot name="header"></slot>
     </div>
-    <div v-if="$slots.img" class="co-panel__img rounded-t-lg w-full">
+    <div v-if="$slots.img" class="co-panel__img rounded-t-lg w-full overflow-hidden">
       <slot name="img"></slot>
     </div>
     <div :class="[paddingStyle.content, contentClass]" class="co-panel__content rounded-lg">
