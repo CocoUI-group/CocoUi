@@ -20,11 +20,11 @@ module.exports = {
   ],
   webpackFinal: (config) => {
     config.resolve.alias['@'] = path.resolve(__dirname, '../src');
-    config.output.publicPath = 'http://static.linzhihui.online/storybook-static/'
+    config.mode === 'production' && (config.output.publicPath = 'http://static.linzhihui.online/storybook-static/');
     return config;
   },
   managerWebpack:  (config) => {
-    config.output.publicPath = 'http://static.linzhihui.online/storybook-static/';
+    config.mode === 'production' &&  (config.output.publicPath = 'http://static.linzhihui.online/storybook-static/');
     return config;
   },
 }
