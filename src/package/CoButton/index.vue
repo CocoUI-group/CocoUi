@@ -55,8 +55,4 @@ export default defineComponent({
 @tailwind components;
 
 @tailwind utilities;
-
-button + button {
-  @apply ml-4;
-}
 </style>

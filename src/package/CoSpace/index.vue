@@ -25,7 +25,7 @@ export default defineComponent({
 @tailwind components;
 @tailwind utilities;
 .co-space {
-  @apply inline-block box-border;
+  @apply inline-block box-border w-full;
 }
 
 .co-space.co-space__x > * {
