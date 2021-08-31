@@ -61,7 +61,6 @@
     "postcss-loader": "^6.1.1",
     "postcss-nesting": "~8.0",
     "prettier": "^2.3.2",
-    "rollup-plugin-postcss": "^4.0.0",
     "tailwindcss": "~2.2",
     "ts-jest": "26",
     "ts-node": "^10.1.0",
