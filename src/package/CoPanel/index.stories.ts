@@ -1,6 +1,7 @@
 import CoPanel from './index.vue'
 import { ThemeSize } from '@/helper'
 import { StoryTemplate } from '@/type/story.type'
+import CoSpace from '@/package/CoSpace/index.vue'
 
 export default {
   title: 'CoPanel',
@@ -22,7 +23,7 @@ interface Args {
 }
 
 export const Common: StoryTemplate<Args> = (args: Args) => ({
-  components: { CoPanel },
+  components: { CoPanel, CoSpace },
   setup() {
     return { args }
   },
@@ -32,101 +33,125 @@ Common.args = {
   padding: ThemeSize.md,
 }
 
-export const Padding: StoryTemplate<Args> = (args: Args) => {
-  const mapRender = (templateFn: (type: string) => string) =>
-    Object.keys(ThemeSize).map(templateFn).join('')
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  const common = (size: string) =>
-    div(`<CoPanel v-bind='args' padding='${size}'>Hello World ${size}</CoPanel>`)
+export const Padding: StoryTemplate<Args> = (args: Args) => ({
+  components: { CoPanel, CoSpace },
+  setup() {
+    return { args }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoPanel v-bind='args' padding='mini'>Hello World mini</CoPanel>
+      <CoPanel v-bind='args' padding='sm'>Hello World sm</CoPanel>
+      <CoPanel v-bind='args' padding='md'>Hello World md</CoPanel>
+      <CoPanel v-bind='args' padding='lg'>Hello World lg</CoPanel>
+    </CoSpace>
+  `,
+})
 
-  return {
-    components: { CoPanel },
-    setup() {
-      return { args }
-    },
-    template: mapRender(common),
-  }
-}
+export const Header: StoryTemplate<Args> = (args: Args) => ({
+  components: { CoPanel, CoSpace },
+  setup() {
+    return { args }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoPanel v-bind='args' padding='mini'>
+        <template #header>header</template>
+        Hello World
+      </CoPanel>
+      <CoPanel v-bind='args' padding='sm'>
+        <template #header>header</template>
+        Hello World
+      </CoPanel>
+      <CoPanel v-bind='args' padding='md'>
+        <template #header>header</template>
+        Hello World
+      </CoPanel>
+      <CoPanel v-bind='args' padding='lg'>
+        <template #header>header</template>
+        Hello World
+      </CoPanel>
+    </CoSpace>`,
+})
+export const Img: StoryTemplate<Args> = (args: Args) => ({
+  components: { CoPanel, CoSpace },
+  setup() {
+    return { args }
+  },
+  template: `
+  <CoSpace direction='y'>
+    <CoPanel v-bind='args' padding='mini'>
+      <template #img><img  src='https://static.dianchacha.com/v1/img/dsr/banner.png?v2' alt=''></template>
+      Hello World
+    </CoPanel>
+    <CoPanel v-bind='args' padding='sm'>
+      <template #img><img  src='https://static.dianchacha.com/v1/img/dsr/banner.png?v2' alt=''></template>
+      Hello World
+    </CoPanel>
+    <CoPanel v-bind='args' padding='md'>
+      <template #img><img  src='https://static.dianchacha.com/v1/img/dsr/banner.png?v2' alt=''></template>
+      Hello World
+    </CoPanel>
+    <CoPanel v-bind='args' padding='lg'>
+      <template #img><img  src='https://static.dianchacha.com/v1/img/dsr/banner.png?v2' alt=''></template>
+      Hello World
+    </CoPanel>
+  </CoSpace>`,
+})
+export const Footer: StoryTemplate<Args> = (args: Args) => ({
+  components: { CoPanel, CoSpace },
+  setup() {
+    return { args }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoPanel v-bind='args' padding='mini'>
+        <template #footer>footer</template>
+        Hello World
+      </CoPanel>
+      <CoPanel v-bind='args' padding='sm'>
+        <template #footer>footer</template>
+        Hello World
+      </CoPanel>
+      <CoPanel v-bind='args' padding='md'>
+        <template #footer>footer</template>
+        Hello World
+      </CoPanel>
+      <CoPanel v-bind='args' padding='lg'>
+        <template #footer>footer</template>
+        Hello World
+      </CoPanel>
+    </CoSpace>
+  `,
+})
 
-export const Header: StoryTemplate<Args> = (args: Args) => {
-  const mapRender = (templateFn: (type: string) => string) =>
-    Object.keys(ThemeSize).map(templateFn).join('')
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  const common = (size: string) =>
-    div(`
-          <CoPanel v-bind='args' padding='${size}'>
-            <template #header>header</template>
-            Hello World
-          </CoPanel>
-        `)
-
-  return {
-    components: { CoPanel },
-    setup() {
-      return { args }
-    },
-    template: mapRender(common),
-  }
-}
-export const Img: StoryTemplate<Args> = (args: Args) => {
-  const mapRender = (templateFn: (type: string) => string) =>
-    Object.keys(ThemeSize).map(templateFn).join('')
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  const common = (size: string) =>
-    div(`
-          <CoPanel v-bind='args' padding='${size}'>
-            <template #img><img  src='https://static.dianchacha.com/v1/img/dsr/banner.png?v2' alt=''></template>
-            Hello World
-          </CoPanel>
-        `)
-
-  return {
-    components: { CoPanel },
-    setup() {
-      return { args }
-    },
-    template: mapRender(common),
-  }
-}
-export const Footer: StoryTemplate<Args> = (args: Args) => {
-  const mapRender = (templateFn: (type: string) => string) =>
-    Object.keys(ThemeSize).map(templateFn).join('')
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  const common = (size: string) =>
-    div(`
-          <CoPanel v-bind='args' padding='${size}'>
-            <template #footer>footer</template>
-            Hello World
-          </CoPanel>
-        `)
-
-  return {
-    components: { CoPanel },
-    setup() {
-      return { args }
-    },
-    template: mapRender(common),
-  }
-}
-
-export const HeaderAndFooter: StoryTemplate<Args> = (args: Args) => {
-  const mapRender = (templateFn: (type: string) => string) =>
-    Object.keys(ThemeSize).map(templateFn).join('')
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  const common = (size: string) =>
-    div(`
-          <CoPanel v-bind='args' padding='${size}'>
-            <template #header>header</template>
-            <template #footer>footer</template>
-            Hello World
-          </CoPanel>
-        `)
-
-  return {
-    components: { CoPanel },
-    setup() {
-      return { args }
-    },
-    template: mapRender(common),
-  }
-}
+export const HeaderAndFooter: StoryTemplate<Args> = (args: Args) => ({
+  components: { CoPanel, CoSpace },
+  setup() {
+    return { args }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoPanel v-bind='args' padding='mini'>
+        <template #header>header</template>
+        <template #footer>footer</template>
+        Hello World
+      </CoPanel>
+      <CoPanel v-bind='args' padding='sm'>
+        <template #header>header</template>
+        <template #footer>footer</template>
+        Hello World
+      </CoPanel>
+      <CoPanel v-bind='args' padding='md'>
+        <template #header>header</template>
+        <template #footer>footer</template>
+        Hello World
+      </CoPanel>
+      <CoPanel v-bind='args' padding='lg'>
+        <template #header>header</template>
+        <template #footer>footer</template>
+        Hello World
+      </CoPanel>
+    </CoSpace>
+`,
+})

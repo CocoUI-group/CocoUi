@@ -1,5 +1,5 @@
 <template>
-  <div class="inline-block w-60 relative">
+  <div class="inline-block w-full relative">
     <input
       v-model="value"
       v-bind="$attrs"

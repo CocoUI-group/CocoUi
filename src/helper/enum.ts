@@ -19,3 +19,8 @@ export enum ThemeRound {
   bySize = 'bySize',
   full = 'full',
 }
+
+export enum ThemeDirection {
+  x = 'x',
+  y = 'y',
+}
