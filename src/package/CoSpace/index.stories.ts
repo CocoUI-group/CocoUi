@@ -39,7 +39,7 @@ export const SpaceDirection: StoryTemplate<Args> = (args: Args) => ({
     return { args }
   },
   template: `
-    <CoSpace v-bind='args' direction='${ThemeDirection.y}'>
+    <CoSpace v-bind='args' direction='y'>
       <CoButton>测试</CoButton>
       <CoButton>测试</CoButton>
     </CoSpace>
@@ -50,24 +50,20 @@ SpaceDirection.args = {
   direction: ThemeDirection.y,
 }
 
-export const SpaceSize: StoryTemplate<Args> = (args: Args) => {
-  const mapRender = (templateFn: (type: string) => string) =>
-    Object.keys(ThemeSize).map(templateFn).join('')
-  const div = (template: string) =>
-    `<div style='margin-bottom: 10px;background: #ccc'>${template}</div>`
-  const common = (size: string) =>
-    div(
-      `<CoSpace style='background: #999' v-bind="args" size="${size}"><CoButton>测试</CoButton><CoButton>测试</CoButton></CoSpace>`
-    )
-
-  return {
-    components: { CoSpace, CoButton },
-    setup() {
-      return { args }
-    },
-    template: mapRender(common),
-  }
-}
+export const SpaceSize: StoryTemplate<Args> = (args: Args) => ({
+  components: { CoSpace, CoButton },
+  setup() {
+    return { args }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoSpace style='background: #999' v-bind="args" size="mini"><CoButton>测试</CoButton><CoButton>测试</CoButton></CoSpace>
+      <CoSpace style='background: #999' v-bind="args" size="sm"><CoButton>测试</CoButton><CoButton>测试</CoButton></CoSpace>
+      <CoSpace style='background: #999' v-bind="args" size="md"><CoButton>测试</CoButton><CoButton>测试</CoButton></CoSpace>
+      <CoSpace style='background: #999' v-bind="args" size="lg"><CoButton>测试</CoButton><CoButton>测试</CoButton></CoSpace>
+    </CoSpace>
+  `,
+})
 
 SpaceSize.args = {
   direction: ThemeDirection.x,

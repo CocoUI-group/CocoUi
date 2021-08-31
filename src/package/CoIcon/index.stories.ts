@@ -3,6 +3,8 @@ import { StoryTemplate } from '@/type/story.type'
 import { ThemeSize, ThemeType } from '@/helper'
 import { IconName } from '@/package/CoIcon/index.icon'
 import { useIcon } from '@/package/CoIcon/index'
+import CoSpace from '@/package/CoSpace/index.vue'
+
 useIcon()
 export default {
   title: 'CoIcon',
@@ -40,11 +42,16 @@ interface Args {
 }
 
 export const Common: StoryTemplate<Args> = (args: Args) => ({
-  components: { CoIcon },
+  components: { CoIcon, CoSpace },
   setup() {
     return { args }
   },
-  template: '<CoIcon v-bind="args" /><CoIcon  v-bind="args" svg />',
+  template: `
+    <CoSpace>
+      <CoIcon v-bind="args" />
+      <CoIcon v-bind="args" svg />
+    </CoSpace>
+  `,
 })
 
 Common.args = {
@@ -55,37 +62,40 @@ Common.args = {
   pointer: false,
 }
 
-export const IconType: StoryTemplate<Args> = (args: Args) => {
-  const mapRender = (templateFn: (type: ThemeType) => string) =>
-    Object.keys(ThemeType).map(templateFn).join('')
-
-  const common = (type: ThemeType) => `<CoIcon v-bind="args" type="${type}" />`
-  return {
-    components: { CoIcon },
-    setup() {
-      return { args }
-    },
-    template: mapRender(common),
-  }
-}
+export const IconType: StoryTemplate<Args> = (args: Args) => ({
+  components: { CoIcon, CoSpace },
+  setup() {
+    return { args }
+  },
+  template: `
+    <CoSpace>
+      <CoIcon v-bind="args" type='default' />
+      <CoIcon v-bind="args" type='primary' />
+      <CoIcon v-bind="args" type='secondary' />
+      <CoIcon v-bind="args" type='success' />
+      <CoIcon v-bind="args" type='warning' />
+    </CoSpace>
+`,
+})
 
 IconType.args = {
   icon: IconName.Apple,
 }
 
-export const IconSize: StoryTemplate<Args> = (args: Args) => {
-  const mapRender = (templateFn: (type: ThemeSize) => string) =>
-    Object.keys(ThemeSize).map(templateFn).join('')
-  const common = (size: ThemeSize) => `<CoIcon v-bind="args" size="${size}" />`
-
-  return {
-    components: { CoIcon },
-    setup() {
-      return { args }
-    },
-    template: mapRender(common),
-  }
-}
+export const IconSize: StoryTemplate<Args> = (args: Args) => ({
+  components: { CoIcon, CoSpace },
+  setup() {
+    return { args }
+  },
+  template: `
+  <CoSpace>
+    <CoIcon v-bind="args" size='mini' />
+    <CoIcon v-bind="args" size='sm' />
+    <CoIcon v-bind="args" size='md' />
+    <CoIcon v-bind="args" size='lg' />
+  </CoSpace>
+`,
+})
 
 IconSize.args = {
   icon: IconName.Apple,

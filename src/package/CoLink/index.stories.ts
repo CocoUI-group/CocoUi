@@ -1,6 +1,7 @@
 import CoLink from './index.vue'
 import { StoryTemplate } from '@/type/story.type'
 import { ThemeSize, ThemeType } from '@/helper'
+import CoSpace from '@/package/CoSpace/index.vue'
 
 export default {
   title: 'CoLink',
@@ -53,51 +54,59 @@ Common.args = {
 }
 
 export const LinkType: StoryTemplate<Args> = (args: Args) => ({
-  components: { CoLink },
+  components: { CoLink, CoSpace },
   setup() {
     return { args }
   },
   template: `
-    <CoLink style='margin: 0 10px' v-bind="args" type='${ThemeType.default}'>default</CoLink>
-    <CoLink style='margin: 0 10px' v-bind="args" type='${ThemeType.primary}'>primary</CoLink>
-    <CoLink style='margin: 0 10px' v-bind="args" type='${ThemeType.secondary}'>secondary</CoLink>
-    <CoLink style='margin: 0 10px' v-bind="args" type='${ThemeType.success}'>success</CoLink>
-    <CoLink style='margin: 0 10px' v-bind="args" type='${ThemeType.danger}'>danger</CoLink>
-    <CoLink style='margin: 0 10px' v-bind="args" type='${ThemeType.warning}'>warning</CoLink>
+    <CoSpace>
+      <CoLink v-bind="args" type='default'>default</CoLink>
+      <CoLink v-bind="args" type='primary'>primary</CoLink>
+      <CoLink v-bind="args" type='secondary'>secondary</CoLink>
+      <CoLink v-bind="args" type='success'>success</CoLink>
+      <CoLink v-bind="args" type='danger'>danger</CoLink>
+      <CoLink v-bind="args" type='warning'>warning</CoLink>
+    </CoSpace>
   `,
 })
 
 export const LinkDisabled: StoryTemplate<Args> = (args: Args) => ({
-  components: { CoLink },
+  components: { CoLink, CoSpace },
   setup() {
     return { args }
   },
   template: `
-    <CoLink style='margin: 0 10px' v-bind="args" >default</CoLink>
-    <CoLink style='margin: 0 10px' v-bind="args" disabled>disabled</CoLink>
+    <CoSpace>
+      <CoLink v-bind="args" >default</CoLink>
+      <CoLink v-bind="args" disabled>disabled</CoLink>
+    </CoSpace>
   `,
 })
 
 export const LinkUnderline: StoryTemplate<Args> = (args: Args) => ({
-  components: { CoLink },
+  components: { CoLink, CoSpace },
   setup() {
     return { args }
   },
   template: `
-    <CoLink style='margin: 0 10px' v-bind="args" :underline='true'>with underline</CoLink>
-    <CoLink style='margin: 0 10px' v-bind="args" :underline='false'>without underline</CoLink>
+    <CoSpace>
+      <CoLink v-bind="args" :underline='true'>with underline</CoLink>
+      <CoLink v-bind="args" :underline='false'>without underline</CoLink>
+    </CoSpace>
   `,
 })
 
 export const LinkSize: StoryTemplate<Args> = (args) => ({
-  components: { CoLink },
+  components: { CoLink, CoSpace },
   setup() {
     return { args }
   },
   template: `
-    <CoLink style='margin: 0 10px' v-bind="args" size='${ThemeSize.mini}'>mini</CoLink>
-    <CoLink style='margin: 0 10px' v-bind="args" size='${ThemeSize.sm}'>sm</CoLink>
-    <CoLink style='margin: 0 10px' v-bind="args" size='${ThemeSize.md}'>md</CoLink>
-    <CoLink style='margin: 0 10px' v-bind="args" size='${ThemeSize.lg}'>lg</CoLink>
+    <CoSpace>
+      <CoLink v-bind="args" size='mini'>mini</CoLink>
+      <CoLink v-bind="args" size='sm'>sm</CoLink>
+      <CoLink v-bind="args" size='md'>md</CoLink>
+      <CoLink v-bind="args" size='lg'>lg</CoLink>
+    </CoSpace>
   `,
 })

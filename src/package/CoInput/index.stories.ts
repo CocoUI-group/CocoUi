@@ -5,6 +5,7 @@ import { ref } from 'vue'
 import 'tailwindcss/tailwind.css'
 import { IconName } from '@/package/CoIcon/index.icon'
 import CoIcon from '@/package/CoIcon/index.vue'
+import CoSpace from '@/package/CoSpace/index.vue'
 
 export default {
   title: 'CoInput',
@@ -55,157 +56,148 @@ interface Args {
 }
 
 export const Common: StoryTemplate<Args> = (args) => ({
-  components: { CoInput },
+  components: { CoInput, CoSpace },
   setup() {
     return { args, value: ref(args.modelValue) }
   },
   template: `
-    <CoInput v-bind='args' v-model='value' /> <span>{{ value }}</span>`,
+    <CoSpace direction='y'>
+      <CoInput v-bind='args' v-model='value' /> <span>{{ value }}</span>
+    </CoSpace>
+  `,
 })
 
 Common.args = {
   modelValue: 'input',
 }
 
-export const InputSize: StoryTemplate<Args> = (args) => {
-  const mapRender = (templateFn: (type: string) => string) =>
-    Object.keys(ThemeSize).map(templateFn).join('')
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  const common = (size: string) =>
-    div(`<CoInput v-bind='args' size='${size}' v-model='value' /> <span>${size}</span>`)
-  return {
-    components: { CoInput },
-    setup() {
-      return { args, value: ref(args.modelValue) }
-    },
-    template: mapRender(common),
-  }
-}
+export const InputSize: StoryTemplate<Args> = (args) => ({
+  components: { CoInput, CoSpace },
+  setup() {
+    return { args, value: ref(args.modelValue) }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoInput v-bind='args' size='mini' v-model='value' /> 
+      <CoInput v-bind='args' size='sm' v-model='value' /> 
+      <CoInput v-bind='args' size='md' v-model='value' /> 
+      <CoInput v-bind='args' size='lg' v-model='value' />
+    </CoSpace>
+  `,
+})
 
 InputSize.args = {
   modelValue: 'input',
 }
 
-export const InputRound: StoryTemplate<Args> = (args) => {
-  const mapRender = (templateFn: (type: string) => string) =>
-    Object.keys(ThemeRound).map(templateFn).join('')
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  const common = (round: string) =>
-    div(`<CoInput v-bind='args' round='${round}' v-model='value' /> <span>${round}</span>`)
-  return {
-    components: { CoInput },
-    setup() {
-      return { args, value: ref(args.modelValue) }
-    },
-    template: mapRender(common),
-  }
-}
+export const InputRound: StoryTemplate<Args> = (args) => ({
+  components: { CoInput, CoSpace },
+  setup() {
+    return { args, value: ref(args.modelValue) }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoInput v-bind='args' round='none' v-model='value' /> <span>none</span>
+      <CoInput v-bind='args' round='bySize' v-model='value' /> <span>bySize</span>
+      <CoInput v-bind='args' round='full' v-model='value' /> <span>full</span>
+    </CoSpace>
+  `,
+})
 
 InputRound.args = {
   modelValue: 'input',
 }
 
-export const InputDisabled: StoryTemplate<Args> = (args) => {
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  return {
-    components: { CoInput },
-    setup() {
-      return { args, value: ref(args.modelValue) }
-    },
-    template: [
-      div(`<CoInput v-bind="args" v-model='value'  />`),
-      div(`<CoInput v-bind="args" v-model='value' disabled  />`),
-    ].join('\n'),
-  }
-}
+export const InputDisabled: StoryTemplate<Args> = (args) => ({
+  components: { CoInput, CoSpace },
+  setup() {
+    return { args, value: ref(args.modelValue) }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoInput v-bind='args' v-model='value' /> 
+      <CoInput v-bind='args' v-model='value' disabled /> 
+    </CoSpace>
+  `,
+})
 InputDisabled.args = {
   modelValue: 'input',
 }
 
-export const InputError: StoryTemplate<Args> = (args) => {
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  return {
-    components: { CoInput },
-    setup() {
-      return { args, value: ref(args.modelValue) }
-    },
-    template: [
-      div(`<CoInput v-bind="args" v-model='value'  />`),
-      div(`<CoInput v-bind="args" v-model='value' error  />`),
-    ].join('\n'),
-  }
-}
+export const InputError: StoryTemplate<Args> = (args) => ({
+  components: { CoInput, CoSpace },
+  setup() {
+    return { args, value: ref(args.modelValue) }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoInput v-bind='args' v-model='value' /> 
+      <CoInput v-bind='args' v-model='value' error /> 
+    </CoSpace>
+  `,
+})
 InputError.args = {
   modelValue: 'input',
 }
-export const InputClearable: StoryTemplate<Args> = (args) => {
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  return {
-    components: { CoInput },
-    setup() {
-      return { args, value: ref(args.modelValue) }
-    },
-    template: [
-      div(`<CoInput v-bind="args" v-model='value'  />`),
-      div(`<CoInput v-bind="args" v-model='value' clearable  />`),
-    ].join('\n'),
-  }
-}
+export const InputClearable: StoryTemplate<Args> = (args) => ({
+  components: { CoInput, CoSpace },
+  setup() {
+    return { args, value: ref(args.modelValue) }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoInput v-bind='args' v-model='value' /> 
+      <CoInput v-bind='args' v-model='value' clearable /> 
+    </CoSpace>
+  `,
+})
 InputClearable.args = {
   modelValue: 'input',
 }
-export const Password: StoryTemplate<Args> = (args) => {
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  return {
-    components: { CoInput },
-    setup() {
-      return { args, value: ref(args.modelValue) }
-    },
-    template: [
-      div(`<CoInput v-bind="args" v-model='value'  />`),
-      div(`<CoInput v-bind="args" v-model='value' password  />`),
-    ].join('\n'),
-  }
-}
+export const Password: StoryTemplate<Args> = (args) => ({
+  components: { CoInput, CoSpace },
+  setup() {
+    return { args, value: ref(args.modelValue) }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoInput v-bind='args' v-model='value' /> 
+      <CoInput v-bind='args' v-model='value' password /> 
+    </CoSpace>
+  `,
+})
 Password.args = {
   modelValue: 'input',
 }
 
-export const InputSlots: StoryTemplate<Args> = (args) => {
-  const div = (template: string) => `<div style='margin-bottom: 10px'>${template}</div>`
-  return {
-    components: { CoInput, CoIcon },
-    setup() {
-      return { args, value: ref(args.modelValue) }
-    },
-    template: [
-      div(`
-        <CoInput v-bind="args" v-model='value' >
-          <template #before>
-            <CoIcon :size="args.size" icon="${IconName.User}" />
-          </template>
-        </CoInput>
-      `),
-      div(`
-       <CoInput v-bind="args" v-model='value' >
-          <template #after>
-            <CoIcon :size="args.size" icon="${IconName.User}" />
-          </template>
-        </CoInput>
-      `),
-      div(`
-       <CoInput v-bind="args" v-model='value' >
-          <template #before>
-            <CoIcon :size="args.size" icon="${IconName.User}" />
-          </template>
-          <template #after>
-            <CoIcon :size="args.size" icon="${IconName.User}" />
-          </template>
-        </CoInput>
-      `),
-    ].join('\n'),
-  }
-}
+export const InputSlots: StoryTemplate<Args> = (args) => ({
+  components: { CoInput, CoIcon, CoSpace },
+  setup() {
+    return { args, value: ref(args.modelValue) }
+  },
+  template: `
+    <CoSpace direction='y'>
+      <CoInput v-bind="args" v-model='value' >
+        <template #before>
+          <CoIcon :size="args.size" icon="${IconName.User}" />
+        </template>
+      </CoInput>
+      <CoInput v-bind="args" v-model='value' >
+        <template #after>
+          <CoIcon :size="args.size" icon="${IconName.User}" />
+        </template>
+      </CoInput>
+      <CoInput v-bind="args" v-model='value' >
+        <template #before>
+          <CoIcon :size="args.size" icon="${IconName.User}" />
+        </template>
+        <template #after>
+          <CoIcon :size="args.size" icon="${IconName.User}" />
+        </template>
+      </CoInput>
+    </CoSpace>
+  `,
+})
 InputSlots.args = {
   modelValue: 'input',
 }
