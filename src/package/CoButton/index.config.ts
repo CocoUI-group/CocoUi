@@ -3,7 +3,7 @@ import { reactify } from '@vueuse/core'
 
 const typeStyle = (type: ThemeType, plain: boolean, disabled: boolean): string => {
   if (disabled) {
-    return 'bg-coolGray-100 border-gray-300 text-gray-500  cursor-not-allowed opacity-80'
+    return 'bg-coolGray-100 border-gray-300 text-gray-500 cursor-not-allowed opacity-80'
   }
   const map = {
     [`${ThemeType.primary}`]: 'bg-primary-500 border-primary-500 text-white hover:opacity-80',
