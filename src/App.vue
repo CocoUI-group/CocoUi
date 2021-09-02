@@ -8,7 +8,7 @@
     <CoRadio v-model="b" text="3" value="1" />
     <CoRadio v-model="b" text="3" value="2" />
     <CoRadio v-model="b" text="3" value="3" />
-    <CoInput></CoInput>
+    <CoInput v-model="a"></CoInput>
     <CoRadioGroup v-model="a">
       <CoRadio text="1" value="1" />
       <CoRadio text="2" value="2" />
@@ -57,7 +57,7 @@ export default defineComponent({
   components: { CoButton, CoSpace, CoInput, CoRadio, CoRadioGroup },
   setup() {
     const a = ref('1')
-    const b = ref(false)
+    const b = ref('1')
     const disabled = ref(false)
     return {
       onClick() {

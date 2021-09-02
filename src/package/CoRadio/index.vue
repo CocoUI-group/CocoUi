@@ -10,11 +10,15 @@
       type="radio"
       v-bind="$attrs"
       ref="radio"
+      :checked="isCheck"
       :disabled="radioDisabled"
-      class="text-primary-500 focus:ring-primary-500 cursor-pointer"
+      class="co-radio__input text-primary-500 focus:ring-primary-500 cursor-pointer"
       :class="{ 'text-gray-400 bg-gray-50 border-gray-400': radioDisabled }"
     />
-    <span class="pl-2" :class="{ 'text-primary-500': isCheck, 'text-gray-400': radioDisabled }">
+    <span
+      class="co-radio__text pl-2"
+      :class="{ 'text-primary-500': isCheck, 'text-gray-400': radioDisabled }"
+    >
       <template v-if="!$slots.default">
         {{ text }}
       </template>
@@ -24,8 +28,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, onMounted, PropType, ref, toRefs, watch } from 'vue'
-import { get } from '@vueuse/core'
+import { computed, defineComponent, inject, PropType, ref, toRefs } from 'vue'
+import { get, set } from '@vueuse/core'
 import { ThemeSize } from '@/helper'
 import { RadioGroup, radioGroupKey } from '@/package/CoRadioGroup/index.config'
 import { reactiveSizeStyle } from '@/package/CoRadio/index.config'
@@ -47,9 +51,16 @@ export default defineComponent({
     const radio = ref<HTMLInputElement>()
     const { value, modelValue, name, size, disabled } = toRefs(props)
     const radioGroup = inject<RadioGroup>(radioGroupKey, {})
-    const radioModel = computed(() =>
-      radioGroup.isGroup ? radioGroup.modelValue : get(modelValue)
-    )
+    const radioModel = computed({
+      get: () => (radioGroup.isGroup ? radioGroup.modelValue : get(modelValue)),
+      set: (val) => {
+        if (radioGroup.isGroup) {
+          radioGroup.changeEvent(val)
+        } else {
+          eventEmit.forEach((e) => ctx.emit(e, val))
+        }
+      },
+    })
     const isCheck = computed(() => get(value) === get(radioModel))
     const radioName = computed(() =>
       radioGroup.isGroup ? radioGroup.name : get(name) || Math.random() + ''
@@ -57,19 +68,7 @@ export default defineComponent({
     const radioSize = computed(() => (radioGroup.isGroup ? radioGroup.size : get(size)))
     const radioDisabled = computed(() => (radioGroup.isGroup ? radioGroup.disabled : get(disabled)))
 
-    const onChange = () => {
-      if (radioGroup.isGroup) {
-        radioGroup.changeEvent(get(value))
-      } else {
-        eventEmit.forEach((e) => ctx.emit(e, get(radio)?.checked ? get(value) : null))
-      }
-    }
-    const radioCheck = (v: string | number | boolean) => {
-      const $el = get(radio)
-      $el && ($el.checked = v === get(value))
-    }
-    watch(radioModel, radioCheck)
-    onMounted(() => radioCheck(get(radioModel)))
+    const onChange = () => set(radioModel, get(value))
     return {
       isCheck,
       radioModel,

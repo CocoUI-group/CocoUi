@@ -54,22 +54,22 @@ export const RadioGroupSize: StoryTemplate<Args> = (args: Args) => ({
   },
   template: `
     <CoSpace direction='y'>
-      <CoRadioGroup size='mini' v-bind="args">
+      <CoRadioGroup v-bind="args" v-model='value' size='mini' >
         <CoRadio value="apple" >apple</CoRadio>
         <CoRadio value="banana" >banana</CoRadio>
         <CoRadio value="coco" >coco</CoRadio>
       </CoRadioGroup>
-      <CoRadioGroup size='sm' v-bind="args">
+      <CoRadioGroup v-bind="args" v-model='value' size='sm' >
         <CoRadio value="apple" >apple</CoRadio>
         <CoRadio value="banana" >banana</CoRadio>
         <CoRadio value="coco" >coco</CoRadio>
       </CoRadioGroup> 
-      <CoRadioGroup size='md' v-bind="args">
+      <CoRadioGroup v-bind="args" v-model='value' size='md' >
         <CoRadio value="apple" >apple</CoRadio>
         <CoRadio value="banana" >banana</CoRadio>
         <CoRadio value="coco" >coco</CoRadio>
       </CoRadioGroup>
-      <CoRadioGroup size='lg' v-bind="args">
+      <CoRadioGroup v-bind="args" v-model='value' size='lg' >
         <CoRadio value="apple" >apple</CoRadio>
         <CoRadio value="banana" >banana</CoRadio>
         <CoRadio value="coco" >coco</CoRadio>
