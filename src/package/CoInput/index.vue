@@ -1,10 +1,9 @@
 <template>
-  <div class="inline-block w-full relative">
+  <div class="inline-block relative">
     <input
       v-model="value"
       v-bind="$attrs"
       class="
-        w-full
         transition-all
         duration-300
         flex-shrink-0
