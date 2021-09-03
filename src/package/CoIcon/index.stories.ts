@@ -1,58 +1,58 @@
-import CoIcon from './index.vue'
-import { StoryTemplate } from '@/type/story.type'
-import { ThemeSize, ThemeType } from '@/helper'
-import { IconName } from '@/package/CoIcon/index.icon'
-import { useIcon } from '@/package/CoIcon/index'
-import CoSpace from '@/package/CoSpace/index.vue'
+import CoIcon from "./index.vue";
+import { StoryTemplate } from "@/type/story.type";
+import { ThemeSize, ThemeType } from "@/helper";
+import { IconName } from "@/package/CoIcon/index.icon";
+import { useIcon } from "@/package/CoIcon/index";
+import CoSpace from "@/package/CoSpace/index.vue";
 
-useIcon()
+useIcon();
 export default {
-  title: 'CoIcon',
+  title: "CoIcon",
   component: CoIcon,
   argTypes: {
     svg: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     icon: {
       options: Object.values(IconName),
-      control: { type: 'select', labels: IconName },
+      control: { type: "select", labels: IconName },
     },
     type: {
       options: Object.values(ThemeType),
-      control: { type: 'select', labels: ThemeType },
+      control: { type: "select", labels: ThemeType },
     },
     size: {
       options: Object.values(ThemeSize),
-      control: { type: 'select', labels: ThemeSize },
+      control: { type: "select", labels: ThemeSize },
     },
     pointer: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     onClick: {},
   },
-}
+};
 
 interface Args {
-  size?: ThemeSize
-  type?: ThemeType
-  icon?: IconName
-  svg?: boolean
-  pointer?: boolean
-  onClick?: CallableFunction
+  size?: ThemeSize;
+  type?: ThemeType;
+  icon?: IconName;
+  svg?: boolean;
+  pointer?: boolean;
+  onClick?: CallableFunction;
 }
 
 export const Common: StoryTemplate<Args> = (args: Args) => ({
   components: { CoIcon, CoSpace },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <CoSpace>
-      <CoIcon v-bind="args" />
-      <CoIcon v-bind="args" svg />
+    <CoIcon v-bind='args' />
+    <CoIcon v-bind='args' svg />
     </CoSpace>
   `,
-})
+});
 
 Common.args = {
   size: ThemeSize.md,
@@ -60,43 +60,43 @@ Common.args = {
   icon: IconName.User,
   svg: false,
   pointer: false,
-}
+};
 
 export const IconType: StoryTemplate<Args> = (args: Args) => ({
   components: { CoIcon, CoSpace },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <CoSpace>
-      <CoIcon v-bind="args" type='default' />
-      <CoIcon v-bind="args" type='primary' />
-      <CoIcon v-bind="args" type='secondary' />
-      <CoIcon v-bind="args" type='success' />
-      <CoIcon v-bind="args" type='warning' />
+    <CoIcon v-bind='args' type='default' />
+    <CoIcon v-bind='args' type='primary' />
+    <CoIcon v-bind='args' type='secondary' />
+    <CoIcon v-bind='args' type='success' />
+    <CoIcon v-bind='args' type='warning' />
     </CoSpace>
-`,
-})
+  `,
+});
 
 IconType.args = {
   icon: IconName.Apple,
-}
+};
 
 export const IconSize: StoryTemplate<Args> = (args: Args) => ({
   components: { CoIcon, CoSpace },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
-  <CoSpace>
-    <CoIcon v-bind="args" size='mini' />
-    <CoIcon v-bind="args" size='sm' />
-    <CoIcon v-bind="args" size='md' />
-    <CoIcon v-bind="args" size='lg' />
-  </CoSpace>
-`,
-})
+    <CoSpace>
+    <CoIcon v-bind='args' size='mini' />
+    <CoIcon v-bind='args' size='sm' />
+    <CoIcon v-bind='args' size='md' />
+    <CoIcon v-bind='args' size='lg' />
+    </CoSpace>
+  `,
+});
 
 IconSize.args = {
   icon: IconName.Apple,
-}
+};

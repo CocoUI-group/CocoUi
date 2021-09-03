@@ -8,7 +8,7 @@
     <CoRadio v-model="b" text="3" value="1" />
     <CoRadio v-model="b" text="3" value="2" />
     <CoRadio v-model="b" text="3" value="3" />
-    <CoInput v-model="a"></CoInput>
+    <CoInput v-model="a" />
     <CoRadioGroup v-model="a">
       <CoRadio text="1" value="1" />
       <CoRadio text="2" value="2" />
@@ -30,16 +30,18 @@
         </CoRadioGroup>
       </div>
       <div>
-        <CoInput class="bg-danger-600"></CoInput>
+        <CoInput class="bg-danger-600" />
       </div>
     </CoSpace>
-    <CoRadioGroup disabled v-model="a">
+    <CoRadioGroup v-model="a" disabled>
       <CoRadio text="1" value="1" />
       <CoRadio text="2" value="2" />
       <CoRadio text="3" value="3" />
     </CoRadioGroup>
     <CoRadio :disabled="disabled" text="3" value="3" />
-    <CoButton @click="onChange">change</CoButton>
+    <CoButton @click="onChange">
+      change
+    </CoButton>
   </div>
 </template>
 
@@ -60,9 +62,6 @@ export default defineComponent({
     const b = ref('1')
     const disabled = ref(false)
     return {
-      onClick() {
-        a.value = !a.value
-      },
       icon: computed(() => (a.value ? IconName.Arrowleft : IconName.Arrowdown)),
       size: computed(() => (a.value ? ThemeSize.lg : ThemeSize.sm)),
       ThemeSize,

@@ -1,20 +1,21 @@
 <template>
-  <div class="co-radio-group" role="radioGroup" ref="radioGroup">
-    <slot></slot>
+  <div ref="radioGroup" class="co-radio-group" role="radioGroup">
+    <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, provide, reactive, ref, toRefs } from 'vue'
+import { defineComponent, PropType, provide, reactive, ref } from 'vue'
 import { ThemeSize } from '@/helper'
 import { radioGroupKey } from '@/package/CoRadioGroup/index.config'
+
 const eventEmit = ['update:modelValue', 'change']
 export default defineComponent({
   name: 'CoRadioGroup',
   props: {
     size: { type: String as PropType<ThemeSize>, default: ThemeSize.md },
     disabled: Boolean,
-    name: String,
+    name: { type: String, default: '' },
     modelValue: {
       type: [String, Number, Boolean],
       default: '',
@@ -27,7 +28,9 @@ export default defineComponent({
     provide(
       radioGroupKey,
       reactive({
-        ...toRefs(props),
+        modelValue: props.modelValue,
+        size: props.size,
+        disabled: props.disabled,
         name: props.name || Math.random() + '',
         isGroup: true,
         changeEvent: (value) => eventEmit.forEach((e) => ctx.emit(e, value)),

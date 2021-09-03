@@ -5,16 +5,16 @@
     :class="[sizeClass, { 'cursor-not-allowed opacity-80': radioDisabled }]"
   >
     <input
-      @change="onChange"
-      :name="radioName"
-      type="radio"
       v-bind="$attrs"
       ref="radio"
+      :name="radioName"
+      type="radio"
       :checked="isCheck"
       :disabled="radioDisabled"
       class="co-radio__input text-primary-500 focus:ring-primary-500"
       :class="{ 'text-gray-400 bg-gray-50 border-gray-400': radioDisabled }"
-    />
+      @change="onChange"
+    >
     <span
       class="co-radio__text pl-2"
       :class="{ 'text-primary-500': isCheck, 'text-gray-400': radioDisabled }"
@@ -22,7 +22,7 @@
       <template v-if="!$slots.default">
         {{ text }}
       </template>
-      <slot></slot>
+      <slot />
     </span>
   </label>
 </template>
@@ -39,18 +39,18 @@ const eventEmit = ['update:modelValue', 'change']
 export default defineComponent({
   name: 'CoRadio',
   props: {
-    text: String,
-    modelValue: { type: [String, Number, Boolean] },
+    text: { type: String, default: '' },
+    modelValue: { type: [String, Number, Boolean], default: '' },
     value: { type: [String, Number, Boolean], required: true },
     disabled: Boolean,
-    name: String,
+    name: { type: String, default: '' },
     size: { type: String as PropType<ThemeSize>, default: ThemeSize.md },
   },
   emits: [...eventEmit],
   setup(props, ctx) {
     const radio = ref<HTMLInputElement>()
     const { value, modelValue, name, size, disabled } = toRefs(props)
-    const radioGroup = inject<RadioGroup>(radioGroupKey, {})
+    const radioGroup = inject<RadioGroup>(radioGroupKey, {} as RadioGroup)
     const radioModel = computed({
       get: () => (radioGroup.isGroup ? radioGroup.modelValue : get(modelValue)),
       set: (val) => {

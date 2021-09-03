@@ -1,24 +1,24 @@
 <template>
-  <i class="iconfont" :class="[iconName, classSize, typeClassList]" v-if="!svg"></i>
+  <i v-if="!svg" :class="[iconName, classSize, typeClassList]" class="iconfont" />
   <svg
     v-else
-    class="icon-svg icon inline-block"
     :class="[classSize, typeClassList]"
     aria-hidden="true"
+    class="icon-svg icon inline-block"
   >
-    <use :xlink:href="'#' + iconName"></use>
+    <use :xlink:href="'#' + iconName" />
   </svg>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, toRefs } from 'vue'
-import { ThemeSize, ThemeType } from '@/helper'
-import { IconName } from '@/package/CoIcon/index.icon'
-import { reactiveSizeStyle, reactiveTypeStyle } from '@/package/CoIcon/index.config'
-import { reactify } from '@vueuse/core'
+import { defineComponent, PropType, toRefs } from "vue";
+import { ThemeSize, ThemeType } from "@/helper";
+import { IconName } from "@/package/CoIcon/index.icon";
+import { reactiveSizeStyle, reactiveTypeStyle } from "@/package/CoIcon/index.config";
+import { reactify } from "@vueuse/core";
 
 export default defineComponent({
-  name: 'CoIcon',
+  name: "CoIcon",
   props: {
     svg: {
       type: Boolean,
@@ -35,17 +35,17 @@ export default defineComponent({
     pointer: Boolean,
   },
   setup(props) {
-    const { icon, size, type, pointer } = toRefs(props)
-    const iconName = reactify((v: IconName) => `co-${v}`)(icon)
-    const classSize = reactiveSizeStyle(size)
-    const typeClassList = reactiveTypeStyle(type, pointer)
+    const { icon, size, type, pointer } = toRefs(props);
+    const iconName = reactify((v: IconName) => `co-${v}`)(icon);
+    const classSize = reactiveSizeStyle(size);
+    const typeClassList = reactiveTypeStyle(type, pointer);
     return {
       iconName,
       classSize,
       typeClassList,
-    }
+    };
   },
-})
+});
 </script>
 
 <style scoped>

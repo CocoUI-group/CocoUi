@@ -6,7 +6,7 @@
     v-bind="$attrs"
     @click="onClick"
   >
-    <slot></slot>
+    <slot />
   </a>
 </template>
 

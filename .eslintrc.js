@@ -4,15 +4,9 @@ module.exports = {
     node: true,
     browser: true,
   },
-  extends: [
-    'plugin:vue/vue3-essential',
-    '@vue/prettier/@typescript-eslint',
-    '@vue/prettier',
-    '@vue/typescript/recommended',
-    'prettier',
-    'plugin:prettier/recommended',
-    // 'plugin:@jarrodldavis/tailwindcss/recommended',
-  ],
+  plugins: ['@typescript-eslint'],
+  extends: ['plugin:@typescript-eslint/recommended', 'plugin:vue/vue3-recommended'],
+  parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
@@ -25,5 +19,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'comma-dangle': ['error', 'only-multiline'],
+    'vue/max-attributes-per-line': 'off',
+    'vue/html-self-closing':'off'
   },
 }
