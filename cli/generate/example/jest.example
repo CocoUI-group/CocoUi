@@ -1,8 +1,8 @@
-import $$$ from './index.vue'
-import { mount } from '@vue/test-utils'
+import $$$ from "./index.vue"
+import { mount } from "@vue/test-utils"
 
-describe('$$$.vue', () => {
-  it('can use', () => {
+describe("$$$.vue", () => {
+  it("can use", () => {
     const wrap = mount($$$)
     expect(wrap).toBeTruthy()
   })

@@ -1,15 +1,15 @@
 <template>
-  <div class="co-space" :class="[`co-space__${direction}`, `co-space__${size}`]">
-    <slot></slot>
+  <div :class="[`co-space__${direction}`, `co-space__${size}`]" class="co-space">
+    <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import { ThemeDirection, ThemeSize } from '@/helper'
+import { defineComponent, PropType } from "vue";
+import { ThemeDirection, ThemeSize } from "@/helper";
 
 export default defineComponent({
-  name: 'CoSpace',
+  name: "CoSpace",
   props: {
     direction: {
       type: String as PropType<ThemeDirection>,
@@ -17,7 +17,7 @@ export default defineComponent({
     },
     size: { type: String as PropType<ThemeSize>, default: ThemeSize.md },
   },
-})
+});
 </script>
 
 <style>

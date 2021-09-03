@@ -4,26 +4,23 @@ module.exports = {
     node: true,
     browser: true,
   },
-  extends: [
-    'plugin:vue/vue3-essential',
-    '@vue/prettier/@typescript-eslint',
-    '@vue/prettier',
-    '@vue/typescript/recommended',
-    'prettier',
-    'plugin:prettier/recommended',
-    // 'plugin:@jarrodldavis/tailwindcss/recommended',
-  ],
+  plugins: ["@typescript-eslint"],
+  extends: ["plugin:@typescript-eslint/recommended", "plugin:vue/vue3-recommended"],
+  parser: "vue-eslint-parser",
   parserOptions: {
-    parser: '@typescript-eslint/parser',
+    parser: "@typescript-eslint/parser",
     ecmaVersion: 2020,
-    sourceType: 'module',
+    sourceType: "module",
     ecmaFeatures: {
       jsx: true,
     },
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'comma-dangle': ['error', 'only-multiline'],
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "comma-dangle": ["error", "only-multiline"],
+    "vue/max-attributes-per-line": "off",
+    "vue/html-self-closing": "off",
+    "vue/singleline-html-element-content-newline": "off",
   },
-}
+};

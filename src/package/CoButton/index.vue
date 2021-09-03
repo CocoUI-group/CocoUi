@@ -1,24 +1,24 @@
 <template>
   <button
-    class="transition-all duration-300 flex-shrink-0 border border-solid shadow-md"
     :class="[typeClassList, sizeClass]"
+    class="transition-all duration-300 flex-shrink-0 border border-solid shadow-md"
     @click="(e) => !disabled && $emit('click', e)"
   >
-    <slot></slot>
+    <slot />
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, toRefs } from 'vue'
-import { ThemeRound, ThemeSize, ThemeType } from '@/helper'
-import { reactiveSizeStyle, reactiveTypeStyle } from '@/package/CoButton/index.config'
+import { defineComponent, PropType, toRefs } from "vue";
+import { ThemeRound, ThemeSize, ThemeType } from "@/helper";
+import { reactiveSizeStyle, reactiveTypeStyle } from "@/package/CoButton/index.config";
 
 export default defineComponent({
-  name: 'CoButton',
+  name: "CoButton",
   props: {
     type: {
       type: String as PropType<ThemeType>,
-      default: 'default',
+      default: "default",
     },
     plain: {
       type: Boolean,
@@ -36,17 +36,17 @@ export default defineComponent({
       type: Boolean,
     },
   },
-  emits: ['click'],
+  emits: ["click"],
   setup(props) {
-    const { type, plain, disabled, size, round } = toRefs(props)
-    const typeClassList = reactiveTypeStyle(type, plain, disabled)
-    const sizeClass = reactiveSizeStyle(size, round)
+    const { type, plain, disabled, size, round } = toRefs(props);
+    const typeClassList = reactiveTypeStyle(type, plain, disabled);
+    const sizeClass = reactiveSizeStyle(size, round);
     return {
       typeClassList,
       sizeClass,
-    }
+    };
   },
-})
+});
 </script>
 
 <style scoped>
