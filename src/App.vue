@@ -39,28 +39,26 @@
       <CoRadio text="3" value="3" />
     </CoRadioGroup>
     <CoRadio :disabled="disabled" text="3" value="3" />
-    <CoButton @click="onChange">
-      change
-    </CoButton>
+    <CoButton @click="onChange">change</CoButton>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
-import { IconName } from '@/package/CoIcon/index.icon'
-import { ThemeSize } from '@/helper'
-import CoRadioGroup from '@/package/CoRadioGroup/index.vue'
-import CoRadio from '@/package/CoRadio/index.vue'
-import CoInput from '@/package/CoInput/index.vue'
-import CoSpace from '@/package/CoSpace/index.vue'
-import CoButton from '@/package/CoButton/index.vue'
+import { computed, defineComponent, ref } from "vue";
+import { IconName } from "@/package/CoIcon/index.icon";
+import { ThemeSize } from "@/helper";
+import CoRadioGroup from "@/package/CoRadioGroup/index.vue";
+import CoRadio from "@/package/CoRadio/index.vue";
+import CoInput from "@/package/CoInput/index.vue";
+import CoSpace from "@/package/CoSpace/index.vue";
+import CoButton from "@/package/CoButton/index.vue";
 
 export default defineComponent({
   components: { CoButton, CoSpace, CoInput, CoRadio, CoRadioGroup },
   setup() {
-    const a = ref('1')
-    const b = ref('1')
-    const disabled = ref(false)
+    const a = ref("1");
+    const b = ref("1");
+    const disabled = ref(false);
     return {
       icon: computed(() => (a.value ? IconName.Arrowleft : IconName.Arrowdown)),
       size: computed(() => (a.value ? ThemeSize.lg : ThemeSize.sm)),
@@ -69,9 +67,9 @@ export default defineComponent({
       b,
       disabled,
       onChange() {
-        disabled.value = !disabled.value
+        disabled.value = !disabled.value;
       },
-    }
+    };
   },
-})
+});
 </script>

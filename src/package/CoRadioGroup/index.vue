@@ -5,25 +5,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, provide, reactive, ref } from 'vue'
-import { ThemeSize } from '@/helper'
-import { radioGroupKey } from '@/package/CoRadioGroup/index.config'
+import { defineComponent, PropType, provide, reactive, ref } from "vue";
+import { ThemeSize } from "@/helper";
+import { radioGroupKey } from "@/package/CoRadioGroup/index.config";
 
-const eventEmit = ['update:modelValue', 'change']
+const eventEmit = ["update:modelValue", "change"];
 export default defineComponent({
-  name: 'CoRadioGroup',
+  name: "CoRadioGroup",
   props: {
     size: { type: String as PropType<ThemeSize>, default: ThemeSize.md },
     disabled: Boolean,
-    name: { type: String, default: '' },
+    name: { type: String, default: "" },
     modelValue: {
       type: [String, Number, Boolean],
-      default: '',
+      default: "",
     },
   },
   emits: [...eventEmit],
   setup(props, ctx) {
-    const radioGroup = ref<HTMLDivElement>()
+    const radioGroup = ref<HTMLDivElement>();
 
     provide(
       radioGroupKey,
@@ -31,17 +31,17 @@ export default defineComponent({
         modelValue: props.modelValue,
         size: props.size,
         disabled: props.disabled,
-        name: props.name || Math.random() + '',
+        name: props.name || Math.random() + "",
         isGroup: true,
         changeEvent: (value) => eventEmit.forEach((e) => ctx.emit(e, value)),
       })
-    )
+    );
 
     return {
       radioGroup,
-    }
+    };
   },
-})
+});
 </script>
 
 <style scoped>

@@ -59,32 +59,34 @@ export const ButtonType: StoryTemplate<Args> = (args) => ({
     return { args };
   },
   template: `
-    <CoSpace direction='y'>
-    <CoSpace>
-      <CoButton v-bind='args' type='default'>default</CoButton>
-      <CoButton v-bind='args' type='primary'>primary</CoButton>
-      <CoButton v-bind='args' type='secondary'>secondary</CoButton>
-      <CoButton v-bind='args' type='success'>success</CoButton>
-      <CoButton v-bind='args' type='warning'>warning</CoButton>
-      <CoButton v-bind='args' type='danger'>danger</CoButton>
-    </CoSpace>
-    <CoSpace>
-      <CoButton v-bind='args' type='default' plain>default</CoButton>
-      <CoButton v-bind='args' type='primary' plain>primary</CoButton>
-      <CoButton v-bind='args' type='secondary' plain>secondary</CoButton>
-      <CoButton v-bind='args' type='success' plain>success</CoButton>
-      <CoButton v-bind='args' type='warning' plain>warning</CoButton>
-      <CoButton v-bind='args' type='danger' plain>danger</CoButton>
-    </CoSpace>
-    <CoSpace>
-      <CoButton v-bind='args' type='default' round='full'>default</CoButton>
-      <CoButton v-bind='args' type='primary' round='full'>primary</CoButton>
-      <CoButton v-bind='args' type='secondary' round='full'>secondary</CoButton>
-      <CoButton v-bind='args' type='success' round='full'>success</CoButton>
-      <CoButton v-bind='args' type='warning' round='full'>warning</CoButton>
-      <CoButton v-bind='args' type='danger' round='full'>danger</CoButton>
-    </CoSpace>
-    </CoSpace>`,
+    <template>
+      <CoSpace direction="y">
+        <CoSpace>
+          <CoButton v-bind="args" type="default">default</CoButton>
+          <CoButton v-bind="args" type="primary">primary</CoButton>
+          <CoButton v-bind="args" type="secondary">secondary</CoButton>
+          <CoButton v-bind="args" type="success">success</CoButton>
+          <CoButton v-bind="args" type="warning">warning</CoButton>
+          <CoButton v-bind="args" type="danger">danger</CoButton>
+        </CoSpace>
+        <CoSpace>
+          <CoButton v-bind="args" type="default" plain>default</CoButton>
+          <CoButton v-bind="args" type="primary" plain>primary</CoButton>
+          <CoButton v-bind="args" type="secondary" plain>secondary</CoButton>
+          <CoButton v-bind="args" type="success" plain>success</CoButton>
+          <CoButton v-bind="args" type="warning" plain>warning</CoButton>
+          <CoButton v-bind="args" type="danger" plain>danger</CoButton>
+        </CoSpace>
+        <CoSpace>
+          <CoButton v-bind="args" type="default" round="full">default</CoButton>
+          <CoButton v-bind="args" type="primary" round="full">primary</CoButton>
+          <CoButton v-bind="args" type="secondary" round="full">secondary</CoButton>
+          <CoButton v-bind="args" type="success" round="full">success</CoButton>
+          <CoButton v-bind="args" type="warning" round="full">warning</CoButton>
+          <CoButton v-bind="args" type="danger" round="full">danger</CoButton>
+        </CoSpace>
+      </CoSpace>
+    </template>`,
 });
 ButtonType.args = {};
 
@@ -94,10 +96,13 @@ export const ButtonDisabled: StoryTemplate<Args> = (args) => ({
     return { args };
   },
   template: `
-    <CoSpace>
-    <CoButton v-bind='args'>Normal</CoButton>
-    <CoButton v-bind='args' disabled>Disabled</CoButton>
-    </CoSpace>`,
+    <template>
+      <CoSpace>
+        <CoButton v-bind="args">Normal</CoButton>
+        <CoButton v-bind="args" disabled>Disabled</CoButton>
+      </CoSpace>
+    </template>
+  `,
 });
 ButtonDisabled.args = {
   type: ThemeType.primary,
@@ -109,12 +114,14 @@ export const ButtonSize: StoryTemplate<Args> = (args) => ({
     return { args };
   },
   template: `
-    <CoSpace>
-    <CoButton v-bind='args' size='mini'>mini</CoButton>
-    <CoButton v-bind='args' size='sm'>sm</CoButton>
-    <CoButton v-bind='args' size='md'>md</CoButton>
-    <CoButton v-bind='args' size='lg'>lg</CoButton>
-    </CoSpace>
+    <template>
+      <CoSpace>
+        <CoButton v-bind="args" size="mini">mini</CoButton>
+        <CoButton v-bind="args" size="sm">sm</CoButton>
+        <CoButton v-bind="args" size="md">md</CoButton>
+        <CoButton v-bind="args" size="lg">lg</CoButton>
+      </CoSpace>
+    </template>
   `,
 });
 ButtonSize.args = {
@@ -127,11 +134,13 @@ export const ButtonRound: StoryTemplate<Args> = (args) => ({
     return { args };
   },
   template: `
-    <CoSpace>
-    <CoButton v-bind='args' round='none'>none</CoButton>
-    <CoButton v-bind='args' round='bySize'>bySize</CoButton>
-    <CoButton v-bind='args' round='full'>full</CoButton>
-    </CoSpace>
+    <template>
+      <CoSpace>
+        <CoButton v-bind="args" round="none">none</CoButton>
+        <CoButton v-bind="args" round="bySize">bySize</CoButton>
+        <CoButton v-bind="args" round="full">full</CoButton>
+      </CoSpace>
+    </template>
   `,
 });
 ButtonRound.args = {

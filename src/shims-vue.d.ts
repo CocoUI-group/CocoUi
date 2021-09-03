@@ -1,8 +1,8 @@
 /* eslint-disable */
-declare module '*.vue' {
-  import { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
-  export default component
+declare module "*.vue" {
+  import { DefineComponent } from "vue";
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
 }
 
-declare const _APP_VERSION: string
+declare const _APP_VERSION: string;

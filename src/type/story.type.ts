@@ -1,6 +1,7 @@
-import { ComponentOptionsWithoutProps } from '@vue/runtime-core'
+import { ComponentOptionsWithoutProps } from "@vue/runtime-core";
 
 export interface StoryTemplate<T> {
-  (args: T): ComponentOptionsWithoutProps
-  args?: T
+  args?: T;
+
+  (args: T): ComponentOptionsWithoutProps;
 }

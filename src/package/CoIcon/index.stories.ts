@@ -47,10 +47,12 @@ export const Common: StoryTemplate<Args> = (args: Args) => ({
     return { args };
   },
   template: `
-    <CoSpace>
-    <CoIcon v-bind='args' />
-    <CoIcon v-bind='args' svg />
-    </CoSpace>
+    <template>
+      <CoSpace>
+        <CoIcon v-bind="args" />
+        <CoIcon v-bind="args" svg />
+      </CoSpace>
+    </template>
   `,
 });
 
@@ -68,13 +70,15 @@ export const IconType: StoryTemplate<Args> = (args: Args) => ({
     return { args };
   },
   template: `
-    <CoSpace>
-    <CoIcon v-bind='args' type='default' />
-    <CoIcon v-bind='args' type='primary' />
-    <CoIcon v-bind='args' type='secondary' />
-    <CoIcon v-bind='args' type='success' />
-    <CoIcon v-bind='args' type='warning' />
-    </CoSpace>
+    <template>
+      <CoSpace>
+        <CoIcon v-bind="args" type="default" />
+        <CoIcon v-bind="args" type="primary" />
+        <CoIcon v-bind="args" type="secondary" />
+        <CoIcon v-bind="args" type="success" />
+        <CoIcon v-bind="args" type="warning" />
+      </CoSpace>
+    </template>
   `,
 });
 
@@ -88,12 +92,14 @@ export const IconSize: StoryTemplate<Args> = (args: Args) => ({
     return { args };
   },
   template: `
-    <CoSpace>
-    <CoIcon v-bind='args' size='mini' />
-    <CoIcon v-bind='args' size='sm' />
-    <CoIcon v-bind='args' size='md' />
-    <CoIcon v-bind='args' size='lg' />
-    </CoSpace>
+    <template>
+      <CoSpace>
+        <CoIcon v-bind="args" size="mini" />
+        <CoIcon v-bind="args" size="sm" />
+        <CoIcon v-bind="args" size="md" />
+        <CoIcon v-bind="args" size="lg" />
+      </CoSpace>
+    </template>
   `,
 });
 

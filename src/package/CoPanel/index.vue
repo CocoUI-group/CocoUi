@@ -24,23 +24,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, toRefs } from 'vue'
-import { reactivePaddingStyle } from '@/package/CoPanel/index.config'
-import { ThemeSize } from '@/helper'
+import { defineComponent, PropType, toRefs } from "vue";
+import { reactivePaddingStyle } from "@/package/CoPanel/index.config";
+import { ThemeSize } from "@/helper";
 
 export default defineComponent({
-  name: 'CoPanel',
+  name: "CoPanel",
   props: {
     padding: { type: String as PropType<ThemeSize>, default: ThemeSize.md },
-    contentClass: { type: String, default: '' },
+    contentClass: { type: String, default: "" },
   },
   setup(props) {
-    const { padding } = toRefs(props)
+    const { padding } = toRefs(props);
     return {
       paddingStyle: reactivePaddingStyle(padding),
-    }
+    };
   },
-})
+});
 </script>
 
 <style scoped>

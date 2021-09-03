@@ -61,10 +61,12 @@ export const Common: StoryTemplate<Args> = (args) => ({
     return { args, value: ref(args.modelValue) };
   },
   template: `
-    <CoSpace direction='y'>
-    <CoInput v-bind='args' v-model='value' />
-    <span>{{ value }}</span>
-    </CoSpace>
+    <template>
+      <CoSpace direction="y">
+        <CoInput v-bind="args" v-model="value" />
+        <span>{{ value }}</span>
+      </CoSpace>
+    </template>
   `,
 });
 
@@ -78,12 +80,14 @@ export const InputSize: StoryTemplate<Args> = (args) => ({
     return { args, value: ref(args.modelValue) };
   },
   template: `
-    <CoSpace direction='y'>
-    <CoInput v-bind='args' size='mini' v-model='value' />
-    <CoInput v-bind='args' size='sm' v-model='value' />
-    <CoInput v-bind='args' size='md' v-model='value' />
-    <CoInput v-bind='args' size='lg' v-model='value' />
-    </CoSpace>
+    <template>
+      <CoSpace direction="y">
+        <CoInput v-bind="args" size="mini" v-model="value" />
+        <CoInput v-bind="args" size="sm" v-model="value" />
+        <CoInput v-bind="args" size="md" v-model="value" />
+        <CoInput v-bind="args" size="lg" v-model="value" />
+      </CoSpace>
+    </template>
   `,
 });
 
@@ -97,14 +101,16 @@ export const InputRound: StoryTemplate<Args> = (args) => ({
     return { args, value: ref(args.modelValue) };
   },
   template: `
-    <CoSpace direction='y'>
-    <CoInput v-bind='args' round='none' v-model='value' />
-    <span>none</span>
-    <CoInput v-bind='args' round='bySize' v-model='value' />
-    <span>bySize</span>
-    <CoInput v-bind='args' round='full' v-model='value' />
-    <span>full</span>
-    </CoSpace>
+    <template>
+      <CoSpace direction="y">
+        <CoInput v-bind="args" round="none" v-model="value" />
+        <span>none</span>
+        <CoInput v-bind="args" round="bySize" v-model="value" />
+        <span>bySize</span>
+        <CoInput v-bind="args" round="full" v-model="value" />
+        <span>full</span>
+      </CoSpace>
+    </template>
   `,
 });
 
@@ -118,10 +124,12 @@ export const InputDisabled: StoryTemplate<Args> = (args) => ({
     return { args, value: ref(args.modelValue) };
   },
   template: `
-    <CoSpace direction='y'>
-    <CoInput v-bind='args' v-model='value' />
-    <CoInput v-bind='args' v-model='value' disabled />
-    </CoSpace>
+    <template>
+      <CoSpace direction="y">
+        <CoInput v-bind="args" v-model="value" />
+        <CoInput v-bind="args" v-model="value" disabled />
+      </CoSpace>
+    </template>
   `,
 });
 InputDisabled.args = {
@@ -134,10 +142,12 @@ export const InputError: StoryTemplate<Args> = (args) => ({
     return { args, value: ref(args.modelValue) };
   },
   template: `
-    <CoSpace direction='y'>
-    <CoInput v-bind='args' v-model='value' />
-    <CoInput v-bind='args' v-model='value' error />
-    </CoSpace>
+    <template>
+      <CoSpace direction="y">
+        <CoInput v-bind="args" v-model="value" />
+        <CoInput v-bind="args" v-model="value" error />
+      </CoSpace>
+    </template>
   `,
 });
 InputError.args = {
@@ -149,10 +159,12 @@ export const InputClearable: StoryTemplate<Args> = (args) => ({
     return { args, value: ref(args.modelValue) };
   },
   template: `
-    <CoSpace direction='y'>
-    <CoInput v-bind='args' v-model='value' />
-    <CoInput v-bind='args' v-model='value' clearable />
-    </CoSpace>
+    <template>
+      <CoSpace direction="y">
+        <CoInput v-bind="args" v-model="value" />
+        <CoInput v-bind="args" v-model="value" clearable />
+      </CoSpace>
+    </template>
   `,
 });
 InputClearable.args = {
@@ -164,10 +176,12 @@ export const Password: StoryTemplate<Args> = (args) => ({
     return { args, value: ref(args.modelValue) };
   },
   template: `
-    <CoSpace direction='y'>
-    <CoInput v-bind='args' v-model='value' />
-    <CoInput v-bind='args' v-model='value' password />
-    </CoSpace>
+    <template>
+      <CoSpace direction="y">
+        <CoInput v-bind="args" v-model="value" />
+        <CoInput v-bind="args" v-model="value" password />
+      </CoSpace>
+    </template>
   `,
 });
 Password.args = {
@@ -180,26 +194,28 @@ export const InputSlots: StoryTemplate<Args> = (args) => ({
     return { args, value: ref(args.modelValue) };
   },
   template: `
-    <CoSpace direction='y'>
-    <CoInput v-bind='args' v-model='value'>
-      <template #before>
-        <CoIcon :size='args.size' icon='${IconName.User}' />
-      </template>
-    </CoInput>
-    <CoInput v-bind='args' v-model='value'>
-      <template #after>
-        <CoIcon :size='args.size' icon='${IconName.User}' />
-      </template>
-    </CoInput>
-    <CoInput v-bind='args' v-model='value'>
-      <template #before>
-        <CoIcon :size='args.size' icon='${IconName.User}' />
-      </template>
-      <template #after>
-        <CoIcon :size='args.size' icon='${IconName.User}' />
-      </template>
-    </CoInput>
-    </CoSpace>
+    <template>
+      <CoSpace direction="y">
+        <CoInput v-bind="args" v-model="value">
+          <template #before>
+            <CoIcon :size="args.size" icon="${IconName.User}" />
+          </template>
+        </CoInput>
+        <CoInput v-bind="args" v-model="value">
+          <template #after>
+            <CoIcon :size="args.size" icon="${IconName.User}" />
+          </template>
+        </CoInput>
+        <CoInput v-bind="args" v-model="value">
+          <template #before>
+            <CoIcon :size="args.size" icon="${IconName.User}" />
+          </template>
+          <template #after>
+            <CoIcon :size="args.size" icon="${IconName.User}" />
+          </template>
+        </CoInput>
+      </CoSpace>
+    </template>
   `,
 });
 InputSlots.args = {

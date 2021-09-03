@@ -1,8 +1,8 @@
-import $$$ from './index.vue'
-import { StoryTemplate } from '@/type/story.type'
+import $$$ from "./index.vue"
+import { StoryTemplate } from "@/type/story.type"
 
 export default {
-  title: '$$$',
+  title: "$$$",
   component: $$$,
   argTypes: {},
 }
@@ -14,7 +14,7 @@ export const Common: StoryTemplate<Args> = (args: Args) => ({
   setup() {
     return { args }
   },
-  template: '<$$$ v-bind="args">$$$</$$$>',
+  template: "<$$$ v-bind="args">$$$</$$$>",
 })
 
 Common.args = {}
