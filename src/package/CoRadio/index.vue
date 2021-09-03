@@ -1,7 +1,7 @@
 <template>
   <label
     role="radio"
-    class="border border-opacity-0 co-radio mr-4 inline-flex items-center"
+    class="border border-opacity-0 co-radio mr-4 inline-flex items-center cursor-pointer"
     :class="[sizeClass, { 'cursor-not-allowed opacity-80': radioDisabled }]"
   >
     <input
@@ -12,7 +12,7 @@
       ref="radio"
       :checked="isCheck"
       :disabled="radioDisabled"
-      class="co-radio__input text-primary-500 focus:ring-primary-500 cursor-pointer"
+      class="co-radio__input text-primary-500 focus:ring-primary-500"
       :class="{ 'text-gray-400 bg-gray-50 border-gray-400': radioDisabled }"
     />
     <span
